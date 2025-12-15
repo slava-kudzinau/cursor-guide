@@ -3,7 +3,7 @@ description: "Master Cursor IDE 2.0 from fundamentals to advanced patterns"
 author: "Viachaslau Kudzinau"
 
 # Theme (optional - GitHub Pages default themes)
-theme: jekyll-theme-slate
+theme: jekyll-theme-architect
 
 # Plugins
 plugins:

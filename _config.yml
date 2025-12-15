@@ -1,0 +1,43 @@
+title: "Cursor IDE: Complete Technical Guide"
+description: "Master Cursor IDE 2.0 from fundamentals to advanced patterns"
+author: "Viachaslau Kudzinau"
+
+# Theme (optional - GitHub Pages default themes)
+theme: jekyll-theme-minimal
+
+# Plugins
+plugins:
+  - jekyll-relative-links
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+  - jekyll-seo-tag
+
+# Enable relative links to work properly
+relative_links:
+  enabled: true
+  collections: true
+
+# Use README.md as index
+readme_index:
+  enabled: true
+
+# Extract titles from markdown headings
+titles_from_headings:
+  enabled: true
+  strip_title: false
+  collections: false
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+# Exclude files from processing
+exclude:
+  - .git
+  - .gitignore
+  - LICENSE
+

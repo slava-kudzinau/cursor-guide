@@ -1,3 +1,8 @@
+---
+title: Home
+nav_order: 1
+---
+
 # Cursor IDE: Complete Technical Guide
 ## Master Index & Navigation
 

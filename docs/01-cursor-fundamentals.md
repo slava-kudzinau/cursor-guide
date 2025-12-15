@@ -1,3 +1,8 @@
+---
+title: "Part 1: Fundamentals & Setup"
+nav_order: 2
+---
+
 # Cursor IDE: Fundamentals & Setup
 ## Part 1 of 6: Concepts, Environment, and Core Workflows
 

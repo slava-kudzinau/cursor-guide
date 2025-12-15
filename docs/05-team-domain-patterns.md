@@ -1,3 +1,8 @@
+---
+title: "Part 5: Team Collaboration & Domain Patterns"
+nav_order: 6
+---
+
 # Cursor IDE: Team Collaboration & Domain Patterns
 ## Part 5 of 6: Teamwork and Domain-Specific Workflows
 

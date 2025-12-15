@@ -1,3 +1,8 @@
+---
+title: "Part 4: Context Management & Prompting"
+nav_order: 5
+---
+
 # Cursor IDE: Context Management & Prompting
 ## Part 4 of 6: Mastering Context and Advanced Prompts
 

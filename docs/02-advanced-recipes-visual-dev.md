@@ -1,3 +1,8 @@
+---
+title: "Part 2: Advanced Recipes & Visual Development"
+nav_order: 3
+---
+
 # Cursor IDE: Advanced Recipes & Visual Development
 ## Part 2 of 6: Advanced Techniques and Visual Patterns
 

@@ -1,3 +1,8 @@
+---
+title: "Part 3: DevOps & Backend Architecture"
+nav_order: 4
+---
+
 # Cursor IDE: DevOps & Backend Architecture
 ## Part 3 of 6: Infrastructure and Backend Patterns
 

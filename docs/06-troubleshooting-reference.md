@@ -1,3 +1,8 @@
+---
+title: "Part 6: Troubleshooting & Reference"
+nav_order: 7
+---
+
 # Cursor IDE: Troubleshooting & Reference
 ## Part 6 of 6: Complete Reference Guide
 

@@ -10,6 +10,10 @@ color_scheme: light
 search_enabled: true
 heading_anchors: true
 
+# Enable Mermaid diagrams
+mermaid:
+  version: "10.6.1"
+
 # Plugins
 plugins:
   - jekyll-relative-links

@@ -2,8 +2,13 @@ title: "Cursor IDE: Complete Technical Guide"
 description: "Master Cursor IDE 2.0 from fundamentals to advanced patterns"
 author: "Viachaslau Kudzinau"
 
-# Theme (optional - GitHub Pages default themes)
-theme: jekyll-theme-architect
+# Theme - Just the Docs for clean documentation
+remote_theme: just-the-docs/just-the-docs
+
+# Just the Docs configuration
+color_scheme: light
+search_enabled: true
+heading_anchors: true
 
 # Plugins
 plugins:

@@ -34,6 +34,7 @@ kramdown:
   input: GFM
   hard_wrap: false
   syntax_highlighter: rouge
+  parse_block_html: true
 
 # Exclude files from processing
 exclude:

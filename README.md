@@ -26,7 +26,7 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 ## 🗂️ Guide Structure
 
-### [Part 1: Fundamentals & Setup](01-cursor-fundamentals.md)
+### [Part 1: Fundamentals & Setup](docs/01-cursor-fundamentals)
 **Essential foundations for all users**
 
 **Sections Covered:**
@@ -63,7 +63,7 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 ---
 
-### [Part 2: Advanced Recipes & Visual Development](02-advanced-recipes-visual-dev.md)
+### [Part 2: Advanced Recipes & Visual Development](docs/02-advanced-recipes-visual-dev)
 **Complex workflows and visual patterns**
 
 **Sections Covered:**
@@ -88,7 +88,7 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 ---
 
-### [Part 3: DevOps & Backend Architecture](03-devops-backend-patterns.md)
+### [Part 3: DevOps & Backend Architecture](docs/03-devops-backend-patterns)
 **Infrastructure and backend patterns**
 
 **Sections Covered:**
@@ -113,7 +113,7 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 ---
 
-### [Part 4: Context Management & Prompting](04-context-prompting-strategies.md)
+### [Part 4: Context Management & Prompting](docs/04-context-prompting-strategies)
 **Mastering context and advanced prompts**
 
 **Sections Covered:**
@@ -138,7 +138,7 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 ---
 
-### [Part 5: Team Collaboration & Domain Patterns](05-team-domain-patterns.md)
+### [Part 5: Team Collaboration & Domain Patterns](docs/05-team-domain-patterns)
 **Teamwork and specialized workflows**
 
 **Sections Covered:**
@@ -165,7 +165,7 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 ---
 
-### [Part 6: Troubleshooting & Reference](06-troubleshooting-reference.md)
+### [Part 6: Troubleshooting & Reference](docs/06-troubleshooting-reference)
 **Complete reference guide and solutions**
 
 **Sections Covered:**
@@ -213,45 +213,45 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 ## 🚀 Quick Start Paths
 
 ### For New Users (Start Here!)
-1. [Part 1: Fundamentals](01-cursor-fundamentals.md) - Read sections 1-3
-2. [Part 4: Context Management](04-context-prompting-strategies.md) - Section 8
-3. [Part 6: Reference Templates](06-troubleshooting-reference.md) - Section 14
+1. [Part 1: Fundamentals](docs/01-cursor-fundamentals) - Read sections 1-3
+2. [Part 4: Context Management](docs/04-context-prompting-strategies) - Section 8
+3. [Part 6: Reference Templates](docs/06-troubleshooting-reference) - Section 14
 
 **Time investment:** 30-45 minutes  
 **Outcome:** Understand basics, set up properly, have templates ready
 
 ### For Individual Contributors
-1. [Part 1: Core Workflows](01-cursor-fundamentals.md) - Section 3
-2. [Part 2: Advanced Recipes](02-advanced-recipes-visual-dev.md) - Sections 4-5
-3. [Part 4: Prompting Strategies](04-context-prompting-strategies.md) - Section 9
-4. [Part 6: Troubleshooting](06-troubleshooting-reference.md) - Section 16
+1. [Part 1: Core Workflows](docs/01-cursor-fundamentals) - Section 3
+2. [Part 2: Advanced Recipes](docs/02-advanced-recipes-visual-dev) - Sections 4-5
+3. [Part 4: Prompting Strategies](docs/04-context-prompting-strategies) - Section 9
+4. [Part 6: Troubleshooting](docs/06-troubleshooting-reference) - Section 16
 
 **Time investment:** 2-3 hours  
 **Outcome:** Master daily workflows, advanced patterns, troubleshooting
 
 ### For DevOps/Platform Engineers
-1. [Part 1: Fundamentals](01-cursor-fundamentals.md) - Sections 1-2
-2. [Part 3: DevOps & Backend](03-devops-backend-patterns.md) - Sections 6-7
-3. [Part 5: Domain Patterns](05-team-domain-patterns.md) - Section 11
-4. [Part 6: Templates](06-troubleshooting-reference.md) - Section 14.3
+1. [Part 1: Fundamentals](docs/01-cursor-fundamentals) - Sections 1-2
+2. [Part 3: DevOps & Backend](docs/03-devops-backend-patterns) - Sections 6-7
+3. [Part 5: Domain Patterns](docs/05-team-domain-patterns) - Section 11
+4. [Part 6: Templates](docs/06-troubleshooting-reference) - Section 14.3
 
 **Time investment:** 2-3 hours  
 **Outcome:** Infrastructure workflows, MCP integration, backend patterns
 
 ### For Team Leads
-1. [Part 1: Setup](01-cursor-fundamentals.md) - Section 2
-2. [Part 4: Context Management](04-context-prompting-strategies.md) - Sections 8-9
-3. [Part 5: Team Collaboration](05-team-domain-patterns.md) - Sections 10, 12
-4. [Part 6: Benchmarks](06-troubleshooting-reference.md) - Section 15
+1. [Part 1: Setup](docs/01-cursor-fundamentals) - Section 2
+2. [Part 4: Context Management](docs/04-context-prompting-strategies) - Sections 8-9
+3. [Part 5: Team Collaboration](docs/05-team-domain-patterns) - Sections 10, 12
+4. [Part 6: Benchmarks](docs/06-troubleshooting-reference) - Section 15
 
 **Time investment:** 3-4 hours  
 **Outcome:** Team setup, shared rules, productivity metrics for buy-in
 
 ### For Frontend Developers
-1. [Part 1: Fundamentals](01-cursor-fundamentals.md) - Sections 1-3
-2. [Part 2: Visual Development](02-advanced-recipes-visual-dev.md) - Section 5
-3. [Part 4: Prompting](04-context-prompting-strategies.md) - Section 9
-4. [Part 6: Templates](06-troubleshooting-reference.md) - Section 14
+1. [Part 1: Fundamentals](docs/01-cursor-fundamentals) - Sections 1-3
+2. [Part 2: Visual Development](docs/02-advanced-recipes-visual-dev) - Section 5
+3. [Part 4: Prompting](docs/04-context-prompting-strategies) - Section 9
+4. [Part 6: Templates](docs/06-troubleshooting-reference) - Section 14
 
 **Time investment:** 2-3 hours  
 **Outcome:** Visual workflows, screenshot-driven development, component patterns
@@ -343,12 +343,12 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 | Issue | Quick Fix | Full Details |
 |-------|-----------|--------------|
-| **Slow responses** | Close tabs, clean `.cursorignore` | [Part 4, Section 8.3](04-context-prompting-strategies.md#83-focused-context-pattern) |
-| **Hallucinations** | Use context-first approach | [Part 4, Section 8.2](04-context-prompting-strategies.md#82-context-first-approach-anti-hallucination) |
-| **Indexing fails** | Check `.cursorignore`, restart indexing | [Part 6, Section 16.1](06-troubleshooting-reference.md#161-cursor-wont-index-codebase) |
-| **Commands fail** | Enable YOLO mode, use non-interactive flags | [Part 6, Section 16.2](06-troubleshooting-reference.md#162-agent-keeps-failing-to-run-commands) |
-| **Rules ignored** | Check syntax, restart Cursor | [Part 6, Section 16.4](06-troubleshooting-reference.md#164-rules-not-applied) |
-| **MCP not connecting** | Verify env vars, check OAuth | [Part 6, Section 16.6](06-troubleshooting-reference.md#166-mcp-servers-not-connecting) |
+| **Slow responses** | Close tabs, clean `.cursorignore` | [Part 4, Section 8.3](docs/04-context-prompting-strategies#83-focused-context-pattern) |
+| **Hallucinations** | Use context-first approach | [Part 4, Section 8.2](docs/04-context-prompting-strategies#82-context-first-approach-anti-hallucination) |
+| **Indexing fails** | Check `.cursorignore`, restart indexing | [Part 6, Section 16.1](docs/06-troubleshooting-reference#161-cursor-wont-index-codebase) |
+| **Commands fail** | Enable YOLO mode, use non-interactive flags | [Part 6, Section 16.2](docs/06-troubleshooting-reference#162-agent-keeps-failing-to-run-commands) |
+| **Rules ignored** | Check syntax, restart Cursor | [Part 6, Section 16.4](docs/06-troubleshooting-reference#164-rules-not-applied) |
+| **MCP not connecting** | Verify env vars, check OAuth | [Part 6, Section 16.6](docs/06-troubleshooting-reference#166-mcp-servers-not-connecting) |
 
 ---
 
@@ -399,15 +399,15 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 ## 🗺️ Navigation
 
-**Start reading:** [Part 1: Fundamentals & Setup →](01-cursor-fundamentals.md)
+**Start reading:** [Part 1: Fundamentals & Setup →](docs/01-cursor-fundamentals)
 
 **All parts:**
-1. [Fundamentals & Setup](01-cursor-fundamentals.md)
-2. [Advanced Recipes & Visual Development](02-advanced-recipes-visual-dev.md)
-3. [DevOps & Backend Architecture](03-devops-backend-patterns.md)
-4. [Context Management & Prompting](04-context-prompting-strategies.md)
-5. [Team Collaboration & Domain Patterns](05-team-domain-patterns.md)
-6. [Troubleshooting & Reference](06-troubleshooting-reference.md)
+1. [Fundamentals & Setup](docs/01-cursor-fundamentals)
+2. [Advanced Recipes & Visual Development](docs/02-advanced-recipes-visual-dev)
+3. [DevOps & Backend Architecture](docs/03-devops-backend-patterns)
+4. [Context Management & Prompting](docs/04-context-prompting-strategies)
+5. [Team Collaboration & Domain Patterns](docs/05-team-domain-patterns)
+6. [Troubleshooting & Reference](docs/06-troubleshooting-reference)
 
 ---
 
@@ -430,5 +430,5 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 *This is a living document that evolves with Cursor. Bookmark, share, and contribute to keep it up-to-date!*
 
-**Master Index** | [Begin with Part 1 →](01-cursor-fundamentals.md)
+**Master Index** | [Begin with Part 1 →](docs/01-cursor-fundamentals)
 

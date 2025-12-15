@@ -10,7 +10,7 @@ nav_order: 3
 **Version**: 2.0  
 **Last Updated**: December 2025
 
-> **📚 Navigation**: [Index](00-index.md) | [← Part 1](01-cursor-fundamentals.md) | **Part 2** | [Part 3 →](03-devops-backend-patterns.md)
+> **📚 Navigation**: [Index](../) | [← Part 1](01-cursor-fundamentals) | **Part 2** | [Part 3 →](03-devops-backend-patterns)
 
 ---
 
@@ -416,9 +416,9 @@ Generate:
 
 Continue to [Part 3: DevOps & Backend Patterns →](03-devops-backend-patterns.md)
 
-Or return to the [Index](00-index.md) for the complete guide navigation.
+Or return to the [Index](../) for the complete guide navigation.
 
 ---
 
-**Part 2 of 6** | [← Part 1](01-cursor-fundamentals.md) | [Index](00-index.md) | [Part 3 →](03-devops-backend-patterns.md)
+**Part 2 of 6** | [← Part 1](01-cursor-fundamentals) | [Index](../) | [Part 3 →](03-devops-backend-patterns)
 

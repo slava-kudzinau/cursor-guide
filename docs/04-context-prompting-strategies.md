@@ -10,7 +10,7 @@ nav_order: 5
 **Version**: 2.0  
 **Last Updated**: December 2025
 
-> **📚 Navigation**: [Index](00-index.md) | [← Part 3](03-devops-backend-patterns.md) | **Part 4** | [Part 5 →](05-team-domain-patterns.md)
+> **📚 Navigation**: [Index](../) | [← Part 3](03-devops-backend-patterns) | **Part 4** | [Part 5 →](05-team-domain-patterns)
 
 ---
 
@@ -527,9 +527,9 @@ Review all changes made in this refactoring:
 
 Continue to [Part 5: Team Collaboration & Domain Patterns →](05-team-domain-patterns.md)
 
-Or return to the [Index](00-index.md) for the complete guide navigation.
+Or return to the [Index](../) for the complete guide navigation.
 
 ---
 
-**Part 4 of 6** | [← Part 3](03-devops-backend-patterns.md) | [Index](00-index.md) | [Part 5 →](05-team-domain-patterns.md)
+**Part 4 of 6** | [← Part 3](03-devops-backend-patterns) | [Index](../) | [Part 5 →](05-team-domain-patterns)
 

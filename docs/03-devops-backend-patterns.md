@@ -10,7 +10,7 @@ nav_order: 4
 **Version**: 2.0  
 **Last Updated**: December 2025
 
-> **📚 Navigation**: [Index](00-index.md) | [← Part 2](02-advanced-recipes-visual-dev.md) | **Part 3** | [Part 4 →](04-context-prompting-strategies.md)
+> **📚 Navigation**: [Index](../) | [← Part 2](02-advanced-recipes-visual-dev) | **Part 3** | [Part 4 →](04-context-prompting-strategies)
 
 ---
 
@@ -558,9 +558,9 @@ Include:
 
 Continue to [Part 4: Context Management & Prompting →](04-context-prompting-strategies.md)
 
-Or return to the [Index](00-index.md) for the complete guide navigation.
+Or return to the [Index](../) for the complete guide navigation.
 
 ---
 
-**Part 3 of 6** | [← Part 2](02-advanced-recipes-visual-dev.md) | [Index](00-index.md) | [Part 4 →](04-context-prompting-strategies.md)
+**Part 3 of 6** | [← Part 2](02-advanced-recipes-visual-dev) | [Index](../) | [Part 4 →](04-context-prompting-strategies)
 

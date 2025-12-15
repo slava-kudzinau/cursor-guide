@@ -10,7 +10,7 @@ nav_order: 7
 **Version**: 2.0  
 **Last Updated**: December 2025
 
-> **📚 Navigation**: [Index](00-index.md) | [← Part 5](05-team-domain-patterns.md) | **Part 6 (Final)**
+> **📚 Navigation**: [Index](../) | [← Part 5](05-team-domain-patterns) | **Part 6 (Final)**
 
 ---
 
@@ -1039,7 +1039,7 @@ Cursor 2.0 represents a significant evolution in AI-assisted development. The co
 
 ---
 
-**Part 6 of 6 (Complete)** | [← Part 5](05-team-domain-patterns.md) | [Return to Index](00-index.md)
+**Part 6 of 6 (Complete)** | [← Part 5](05-team-domain-patterns) | [Return to Index](../)
 
 *This guide is a living document. As Cursor evolves and new patterns emerge, we'll update it. Bookmark, share, and contribute!*
 

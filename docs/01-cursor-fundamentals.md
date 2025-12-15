@@ -10,7 +10,7 @@ nav_order: 2
 **Version**: 2.0  
 **Last Updated**: December 2025
 
-> **📚 Navigation**: [Index](00-index.md) | **Part 1** | [Part 2 →](02-advanced-recipes-visual-dev.md)
+> **📚 Navigation**: [Index](../) | **Part 1** | [Part 2 →](02-advanced-recipes-visual-dev)
 
 ---
 
@@ -944,9 +944,9 @@ Generate final version + tests.
 
 Continue to [Part 2: Advanced Recipes & Visual Development →](02-advanced-recipes-visual-dev.md)
 
-Or return to the [Index](00-index.md) for the complete guide navigation.
+Or return to the [Index](../) for the complete guide navigation.
 
 ---
 
-**Part 1 of 6** | [Index](00-index.md) | [Part 2 →](02-advanced-recipes-visual-dev.md)
+**Part 1 of 6** | [Index](../) | [Part 2 →](02-advanced-recipes-visual-dev)
 

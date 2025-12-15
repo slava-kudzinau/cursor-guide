@@ -10,7 +10,7 @@ nav_order: 6
 **Version**: 2.0  
 **Last Updated**: December 2025
 
-> **📚 Navigation**: [Index](00-index.md) | [← Part 4](04-context-prompting-strategies.md) | **Part 5** | [Part 6 →](06-troubleshooting-reference.md)
+> **📚 Navigation**: [Index](../) | [← Part 4](04-context-prompting-strategies) | **Part 5** | [Part 6 →](06-troubleshooting-reference)
 
 ---
 
@@ -717,9 +717,9 @@ Deny patterns:
 
 Continue to [Part 6: Troubleshooting & Reference →](06-troubleshooting-reference.md)
 
-Or return to the [Index](00-index.md) for the complete guide navigation.
+Or return to the [Index](../) for the complete guide navigation.
 
 ---
 
-**Part 5 of 6** | [← Part 4](04-context-prompting-strategies.md) | [Index](00-index.md) | [Part 6 →](06-troubleshooting-reference.md)
+**Part 5 of 6** | [← Part 4](04-context-prompting-strategies) | [Index](../) | [Part 6 →](06-troubleshooting-reference)
 

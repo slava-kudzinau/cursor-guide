@@ -4,277 +4,277 @@ nav_order: 1
 ---
 
 # Cursor IDE: Complete Technical Guide
-## Master Index & Navigation
 
-**Maintainer**: Viachaslau Kudzinau (viachaslau_kudzinau@epam.com)  
-**Version**: 2.0  
-**Last Updated**: December 2025
-
----
-
-## 📖 About This Guide
-
-This comprehensive guide covers everything you need to master Cursor IDE 2.0, from fundamentals to advanced enterprise patterns. The guide is split into 6 logically organized parts for easy navigation and reference.
-
-**What's New in Version 2.0:**
-- Cursor 2.0 features (Parallel agents, Composer model, Plan Mode)
-- Debug Mode & Visual Editor
-- Model Context Protocol (MCP) integration
-- Latest Context7 MCP documentation
-- Screenshot-driven development patterns
-- DevOps & Infrastructure workflows
-- Real-world productivity benchmarks (2025 data)
-- Team collaboration patterns
-- Comprehensive troubleshooting guide
+**Master Cursor IDE for maximum productivity**  
+**Target Audience:** Senior developers, tech leads, engineering teams  
+**Last Updated:** January 2026
 
 ---
 
-## 🗂️ Guide Structure
+## 🎯 What You'll Master
 
-### [Part 1: Fundamentals & Setup](docs/01-cursor-fundamentals)
-**Essential foundations for all users**
+This comprehensive guide teaches you to leverage **Cursor IDE** for:
 
-**Sections Covered:**
-1. **Concepts & Mental Models** - Understanding Cursor's architecture
-   - Agent system prompt structure
-   - Tool selection matrix (Tab, Cmd+K, Composer, Debug Mode, etc.)
-   - Model selection guide (Cursor Model, Claude, GPT-4o, Gemini)
-   - Context windows & indexing pipeline
-   - Rules architecture (`.cursorrules` vs `.cursor/rules/*.mdc`)
-   - Model Context Protocol (MCP) basics
-   - Context7 MCP - live documentation access
-
-2. **Environment & Repo Setup** - Setting up for success
-   - Codebase indexing strategies (small repos vs monorepos)
-   - Project structure best practices
-   - `instructions.md` pattern (universal)
-   - Commands feature (reusable team prompts)
-   - Monorepo best practices
-
-3. **Core Workflows** - Daily development patterns
-   - TDD with Agent (test-first pattern)
-   - Refactoring pattern (multi-step, incremental)
-   - Debug Mode workflow (hypothesis-driven)
-   - Parallel agents (exploring multiple approaches)
-   - Infrastructure-as-Code (Terraform, CDK)
-   - Lambda/Serverless recipes
-   - Progressive enhancement pattern
-
-**Key Takeaways:**
-- Tool selection based on task complexity
-- Clean context = 30% faster responses
-- `@instructions.md` is your single source of truth
-- YOLO mode for automated testing loops
+- ✅ **Tab autocomplete** - Fast, predictive code completion (320ms)
+- ✅ **Inline Edit (Cmd+K)** - Surgical, focused changes
+- ✅ **Composer/Agent (Cmd+I)** - Multi-file orchestration
+- ✅ **Debug Mode** - Hypothesis-driven debugging
+- ✅ **Parallel Agents** - Explore multiple solutions simultaneously
+- ✅ **Visual Editor** - Real-time UI styling and design
+- ✅ **MCP Integration** - Connect to external systems (Slack, GitHub, databases)
+- ✅ **Context7** - Live, version-specific library documentation
+- ✅ **Multiple AI models** - Claude 4.5, GPT-5, Gemini 3, Cursor Composer
+- ✅ **Enterprise patterns** - Team collaboration and deployment
 
 ---
 
-### [Part 2: Advanced Recipes & Visual Development](docs/02-advanced-recipes-visual-dev)
-**Complex workflows and visual patterns**
+## 🚀 Get Your First Win in 5 Minutes
 
-**Sections Covered:**
-4. **Advanced Recipes** - Complex multi-phase tasks
-   - API migration (REST → GraphQL)
-   - Database schema migrations with Prisma
-   - Large-scale refactoring (Class → Hooks)
-   - Dependency upgrades (major versions)
-   - Micro-frontend integration (Module Federation)
+### 1. Auto-Complete with Tab
+```typescript
+// Just start typing and press Tab
+function calculateMonthlyPayment(principal, rate, years) {
+  // Tab suggests the entire implementation
+}
+```
 
-5. **Visual Development Patterns** - Screenshot-driven workflows
-   - Screenshot-to-code development
-   - Comparative visual debugging
-   - Visual Editor workflow (NEW in Dec 2025)
-   - Reverse engineering UIs
+### 2. Inline Edit with Cmd+K
+```
+Select a function
+Press Cmd+K (Windows: Ctrl+K)
+"Refactor this function to use async/await and add error handling"
+```
 
-**Key Takeaways:**
-- Break migrations into analysis → plan → execute phases
-- Use screenshots for exact visual reference
-- Visual Editor for real-time styling
-- Always validate + review database migrations
+### 3. Multi-File Feature with Composer
+```
+Press Cmd+I (Windows: Ctrl+I)
+"@codebase Add authentication to the entire application"
+```
 
----
-
-### [Part 3: DevOps & Backend Architecture](docs/03-devops-backend-patterns)
-**Infrastructure and backend patterns**
-
-**Sections Covered:**
-6. **DevOps & Infrastructure** - Cloud and container workflows
-   - Kubernetes with MCP integration (live cluster access)
-   - Terraform patterns (multi-stage infrastructure)
-   - Docker multi-stage builds (optimized images)
-   - CI/CD pipeline templates (GitHub Actions, matrix strategy)
-   - Helm chart generation
-
-7. **Backend Architecture Patterns** - Scalable system design
-   - Microservices consistency pattern
-   - Event sourcing implementation
-   - CQRS (Command Query Responsibility Segregation)
-   - API gateway pattern
-
-**Key Takeaways:**
-- MCP enables live infrastructure debugging
-- Follow existing patterns for consistency
-- Use event sourcing for audit trails
-- Separate read/write with CQRS for scalability
+### 4. Debug with Debug Mode
+```
+"This function returns undefined intermittently. Debug and fix it."
+Agent instruments code, analyzes logs, proposes fix
+```
 
 ---
 
-### [Part 4: Context Management & Prompting](docs/04-context-prompting-strategies)
-**Mastering context and advanced prompts**
+## 📚 Guide Structure
 
-**Sections Covered:**
-8. **Context Management** - Maximizing agent effectiveness
-   - Context-first approach (anti-hallucination)
-   - Focused context pattern (window hygiene)
-   - Conversation reset pattern (when to restart)
-   - @ Mention strategy reference (file/folder/codebase/docs/web)
-   - Context prioritization (what agent sees first)
+### [Part 1: Fundamentals & Core Concepts](docs/01-fundamentals-core-concepts/)
 
-9. **Advanced Prompting Strategies** - Expert techniques
-   - Chain-of-thought for complex features
-   - Multi-tool orchestration (complex workflows)
-   - The "over-specification" anti-pattern
-   - Model ensemble strategy (different models for different phases)
+Build essential mental models and understand Cursor's architecture.
 
-**Key Takeaways:**
-- Analyze before implementing (prevent hallucinations)
-- Close irrelevant tabs before agent tasks
-- Reset conversation after 3 failed attempts
-- Use Claude for planning, Cursor Model for execution, Gemini for review
+#### ✅ [Section 1: Mental Models & Architecture](docs/01-fundamentals-core-concepts/01-mental-models-architecture.md)
+**Status:** Complete ✅  
+Learn how Cursor thinks: Tab vs Inline Edit vs Composer vs Agent, AI model selection, context windows, rules architecture, and MCP integration.
+
+**Key concepts:**
+- Tool selection matrix (Tab, Cmd+K, Cmd+I, Debug Mode, Parallel Agents)
+- 8 AI models and when to use each
+- Context windows and codebase indexing
+- Rules architecture (Project Rules, AGENTS.md, Team Rules)
+- Model Context Protocol (MCP) and Context7
+
+**Time:** 45 minutes
 
 ---
 
-### [Part 5: Team Collaboration & Domain Patterns](docs/05-team-domain-patterns)
-**Teamwork and specialized workflows**
+#### ✅ [Section 2: Environment & Project Setup](docs/01-fundamentals-core-concepts/02-environment-project-setup.md)
+**Status:** Complete ✅  
+Install Cursor, configure workspace, create `instructions.md`, set up rules, and optimize for your project size.
 
-**Sections Covered:**
-10. **Team Collaboration** - Scaling AI across teams
-    - Shared rules repository (git submodules)
-    - Team notepads (architecture, troubleshooting)
-    - Pair programming with agent
-    - Automated PR reviews
+**Key topics:**
+- Installation and subscription tiers
+- Codebase indexing strategies (small repos vs monorepos)
+- `instructions.md` pattern (single source of truth)
+- Project Rules (`.cursor/rules/`) or AGENTS.md setup
+- `.cursorignore` configuration
+- Commands feature for reusable prompts
+- Monorepo best practices
 
-11. **Domain-Specific Patterns** - Industry workflows
-    - Kubernetes manifest generation
-    - Data pipelines (dbt + Airflow)
-    - ML model training pipelines (XGBoost)
-
-12. **Runbooks & Guardrails** - Safety and standards
-    - Project rules templates (TypeScript, Security)
-    - YOLO mode guardrails (safe vs dangerous commands)
-
-**Key Takeaways:**
-- Centralize rules for team consistency
-- Document common issues in team notepads
-- Automate PR reviews with custom commands
-- Configure YOLO mode with explicit allow/deny lists
+**Time:** 30-45 minutes
 
 ---
 
-### [Part 6: Troubleshooting & Reference](docs/06-troubleshooting-reference)
-**Complete reference guide and solutions**
+#### ✅ [Section 3: Core Workflows](docs/01-fundamentals-core-concepts/03-core-workflows.md)
+**Status:** Complete ✅  
+Master essential daily development workflows with Cursor.
 
-**Sections Covered:**
-13. **Failure Modes & Anti-patterns** - What to avoid
-    - Common failure modes (context overflow, infinite loops, code duplication)
-    - Anti-patterns deep dive (vague prompts, accepting changes blindly, no version control)
+**Key workflows:**
+- TDD pattern (test-first with Agent)
+- Refactoring pattern (multi-step, incremental)
+- Debug Mode workflow (hypothesis-driven)
+- Parallel agents (exploring multiple approaches)
+- Infrastructure-as-Code (Terraform, CDK)
+- Progressive enhancement pattern
 
-14. **Reference Prompts & Templates** - Copy-paste templates
-    - TDD template
-    - Refactoring template
-    - Infrastructure template
-    - Migration template
-    - Anti-hallucination template
-    - Code review template
-
-15. **Productivity Benchmarks** - Real-world data (2025)
-    - Cursor vs Competitors (speed, accuracy, features)
-    - Productivity metrics (39% more PRs, 26% faster time-to-PR)
-    - Developer velocity improvements (5-10x for boilerplate)
-    - Cost analysis and ROI calculations
-
-16. **Troubleshooting Guide** - Solutions to common issues
-    - Cursor won't index codebase
-    - Agent keeps failing to run commands
-    - Tab completion slow or missing
-    - Rules not applied
-    - Out of memory errors
-    - MCP servers not connecting
-    - Visual Editor not working
-
-17. **Future-Proofing** - Preparing for the future
-    - Upcoming features (confirmed roadmap for 2026)
-    - Migration strategies (Copilot, Continue, custom APIs, Cody)
-    - Preparing for AI evolution
-
-**Key Takeaways:**
-- Commit before AI edits (git is your safety net)
-- Review all diffs incrementally
-- Use specific prompts, not vague ones
-- Cursor is 30% faster than Copilot
-- Clean context = 40% fewer errors
+**Time:** 45 minutes
 
 ---
 
-## 🚀 Quick Start Paths
+### [Part 2: Advanced Features & Visual Development](docs/02-advanced-features-visual-dev/)
 
-### For New Users (Start Here!)
-1. [Part 1: Fundamentals](docs/01-cursor-fundamentals) - Read sections 1-3
-2. [Part 4: Context Management](docs/04-context-prompting-strategies) - Section 8
-3. [Part 6: Reference Templates](docs/06-troubleshooting-reference) - Section 14
+**Status:** Complete ✅
 
-**Time investment:** 30-45 minutes  
-**Outcome:** Understand basics, set up properly, have templates ready
+Complex workflows and visual development patterns.
 
-### For Individual Contributors
-1. [Part 1: Core Workflows](docs/01-cursor-fundamentals) - Section 3
-2. [Part 2: Advanced Recipes](docs/02-advanced-recipes-visual-dev) - Sections 4-5
-3. [Part 4: Prompting Strategies](docs/04-context-prompting-strategies) - Section 9
-4. [Part 6: Troubleshooting](docs/06-troubleshooting-reference) - Section 16
-
-**Time investment:** 2-3 hours  
-**Outcome:** Master daily workflows, advanced patterns, troubleshooting
-
-### For DevOps/Platform Engineers
-1. [Part 1: Fundamentals](docs/01-cursor-fundamentals) - Sections 1-2
-2. [Part 3: DevOps & Backend](docs/03-devops-backend-patterns) - Sections 6-7
-3. [Part 5: Domain Patterns](docs/05-team-domain-patterns) - Section 11
-4. [Part 6: Templates](docs/06-troubleshooting-reference) - Section 14.3
-
-**Time investment:** 2-3 hours  
-**Outcome:** Infrastructure workflows, MCP integration, backend patterns
-
-### For Team Leads
-1. [Part 1: Setup](docs/01-cursor-fundamentals) - Section 2
-2. [Part 4: Context Management](docs/04-context-prompting-strategies) - Sections 8-9
-3. [Part 5: Team Collaboration](docs/05-team-domain-patterns) - Sections 10, 12
-4. [Part 6: Benchmarks](docs/06-troubleshooting-reference) - Section 15
-
-**Time investment:** 3-4 hours  
-**Outcome:** Team setup, shared rules, productivity metrics for buy-in
-
-### For Frontend Developers
-1. [Part 1: Fundamentals](docs/01-cursor-fundamentals) - Sections 1-3
-2. [Part 2: Visual Development](docs/02-advanced-recipes-visual-dev) - Section 5
-3. [Part 4: Prompting](docs/04-context-prompting-strategies) - Section 9
-4. [Part 6: Templates](docs/06-troubleshooting-reference) - Section 14
-
-**Time investment:** 2-3 hours  
-**Outcome:** Visual workflows, screenshot-driven development, component patterns
+- Advanced recipes (API migrations, database migrations, large-scale refactors)
+- Visual development (screenshot-to-code, Visual Editor, comparative debugging)
 
 ---
 
-## 📋 Quick Reference Tables
+### [Part 3: DevOps & Backend Architecture](docs/03-devops-backend-architecture/)
+
+**Status:** Complete ✅
+
+Infrastructure and backend patterns.
+
+- DevOps & Infrastructure (Kubernetes with MCP, Terraform, Docker, CI/CD)
+- Backend architecture patterns (microservices, event sourcing, CQRS, API gateway)
+
+---
+
+### [Part 4: Context Management & Prompting](docs/04-context-management-prompting/)
+
+**Status:** Complete ✅
+
+Mastering context and advanced prompts.
+
+- Context management (context-first approach, focused context, conversation hygiene)
+- Advanced prompting strategies (chain-of-thought, multi-tool orchestration, model ensemble)
+
+---
+
+### [Part 5: Team Collaboration & Domain Patterns](docs/05-team-collaboration-domain/)
+
+**Status:** Complete ✅
+
+Teamwork and specialized workflows.
+
+- Team collaboration (shared rules, team notepads, pair programming, PR reviews)
+- Domain-specific patterns (Kubernetes, data pipelines, ML training)
+- Runbooks & guardrails (project rules templates, YOLO mode guardrails)
+
+---
+
+### [Part 6: Troubleshooting & Reference](docs/06-troubleshooting-reference/)
+
+**Status:** Complete ✅
+
+Complete reference guide and solutions.
+
+- Failure modes & anti-patterns
+- Reference prompts & templates
+- Productivity benchmarks
+- Troubleshooting guide
+- Future-proofing strategies
+
+---
+
+## 🗺️ Learning Paths
+
+### Path 1: "First Win in 15 Minutes" ⚡
+
+**Goal:** Get productive immediately
+
+```mermaid
+graph LR
+    A["Install<br/>5 min"] --> B["Setup<br/>5 min"] --> C["First<br/>Examples<br/>5 min"] --> D["Start<br/>Coding!"]
+    
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style C fill:#fff3cd
+    style D fill:#d4edda
+```
+
+**Steps:**
+1. Install Cursor IDE (5 min)
+2. Create `instructions.md` and `.cursor/rules/` or `AGENTS.md` (5 min)
+3. Try Tab, Cmd+K, and Cmd+I (5 min)
+4. Start using in your work
+
+**When to come back:** After a few hours, complete Part 1 for deeper understanding.
+
+---
+
+### Path 2: "Master Cursor in 4 Hours" 🎓
+
+**Goal:** Comprehensive mastery
+
+```mermaid
+graph LR
+    A["Part 1<br/>2 hr"] --> B["Part 2<br/>1 hr"]
+    B --> C["Part 4<br/>1 hr"]
+    C --> D["Cursor<br/>Master"]
+    
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style C fill:#fff3cd
+    style D fill:#90EE90,stroke:#2d862d,stroke-width:3px
+```
+
+**Steps:**
+1. **Part 1:** Fundamentals & Core Concepts (2 hours)
+2. **Part 2:** Advanced Features & Visual Dev (1 hour)
+3. **Part 4:** Context Management & Prompting (1 hour)
+4. Practice with real projects
+
+**Outcome:** Confident use of all Cursor features, 30-40% velocity improvement.
+
+---
+
+### Path 3: "Enable Your Team in 2 Hours" 👥
+
+**Goal:** Team adoption and consistency
+
+```mermaid
+graph TB
+    A["Part 1<br/>Setup"] --> B["Create Team<br/>Config"]
+    A --> C["Part 5<br/>Collaboration"]
+    
+    B --> D["Share with<br/>Team"]
+    C --> D
+    
+    D --> E["Team<br/>Onboarding"]
+    
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style C fill:#fff3cd
+    style D fill:#d4edda
+    style E fill:#90EE90,stroke:#2d862d,stroke-width:3px
+```
+
+**Focus areas:**
+1. **Part 1, Section 2:** Environment & Project Setup
+   - Create shared `instructions.md`
+   - Set up `.cursor/rules/` for team
+   - Configure `.cursorignore`
+2. **Part 5:** Team Collaboration
+   - Shared rules repository
+   - Team notepads
+   - Commands for common tasks
+3. **Team enablement:**
+   - Commit configurations to git
+   - Schedule training session
+   - Track velocity metrics
+
+**Outcome:** Team consistency, faster onboarding, shared best practices.
+
+---
+
+## 💡 Productivity Patterns
 
 ### Tool Selection Matrix
 
 | Task Type | Use This | Why |
 |-----------|----------|-----|
-| Boilerplate, imports | **Tab** (autocomplete) | Fastest (320ms), predictive |
-| Single-line fix | **Cmd+K** | Surgical, shows diff |
-| Refactor function | **Cmd+K** | Focused scope, fast |
-| Multi-file feature | **Cmd+I** (Composer) | Multi-file orchestration |
+| Boilerplate, imports | **Tab** | Fastest (320ms), predictive |
+| Single-line fix | **Inline Edit (Cmd+K)** | Surgical, shows diff |
+| Refactor function | **Inline Edit (Cmd+K)** | Focused scope, fast |
+| Multi-file feature | **Composer (Cmd+I)** | Multi-file orchestration |
 | Visual UI work | **Visual Editor** | Real-time styling |
-| Complex architecture | **Chat (Agent mode)** | Autonomous, cross-cutting |
+| Complex architecture | **Agent Mode** | Autonomous, cross-cutting |
 | Elusive bugs | **Debug Mode** | Hypothesis-driven debugging |
 | Exploring approaches | **Parallel Agents** | Best-of-N solutions |
 
@@ -282,10 +282,10 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 | Phase | Model | Why |
 |-------|-------|-----|
-| **Planning/Analysis** | Claude 3.5 Sonnet | Deep reasoning, complex instructions |
-| **Execution** | Cursor Model | 4x faster, optimized for coding |
-| **Review** | Gemini 2.5 Flash | 2M token context, full codebase review |
-| **Speed over accuracy** | GPT-4o | Fast boilerplate generation |
+| **Planning/Analysis** | Claude 4.5 Sonnet | Deep reasoning, complex instructions |
+| **Execution** | Cursor Composer 1 | 4x faster, optimized for coding |
+| **Review** | Gemini 3 Pro | 1M token context, full codebase review |
+| **Speed over accuracy** | GPT-5.2 | Fast boilerplate generation |
 
 ### Context @ Mention Strategy
 
@@ -297,9 +297,20 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 | **Docs** | `@react-docs.org` | Static documentation |
 | **Web** | `@web` | Latest news/updates |
 | **Context7** | Auto-invoked | Version-specific library docs |
-| **Auto-context** | `@Recommended` | Quick starts |
+| **Instructions** | `@instructions.md` | Project context |
 
-### Productivity Benchmarks
+---
+
+## 💰 Pricing & ROI
+
+### Subscription Tiers
+
+- **Free Tier**: Limited requests, basic features
+- **Pro Tier** ($20/month): Unlimited requests, all models, priority support
+- **Business Tier**: Team features, admin controls
+- **Enterprise Tier**: Custom deployment, SSO, compliance
+
+### ROI Examples
 
 | Metric | Improvement | Source |
 |--------|-------------|---------|
@@ -311,14 +322,91 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 | **Debugging** | 2-3x faster | With Debug Mode |
 | **Documentation** | 10x faster | README, API docs |
 
+**Break-even:** Most teams see ROI within 2-4 weeks.
+
 ---
 
-## 🎯 Learning Milestones
+## ⌨️ Essential Keyboard Shortcuts
+
+### Core Features
+
+| Action | Windows/Linux | macOS |
+|--------|---------------|-------|
+| Tab autocomplete | `Tab` | `Tab` |
+| Inline Edit | `Ctrl+K` | `Cmd+K` |
+| Composer/Agent | `Ctrl+I` | `Cmd+I` |
+| Chat | `Ctrl+L` | `Cmd+L` |
+| New chat | `Ctrl+Shift+L` | `Cmd+Shift+L` |
+
+### Agent Controls
+
+| Action | Windows/Linux | macOS |
+|--------|---------------|-------|
+| Command palette | `Ctrl+Shift+P` | `Cmd+Shift+P` |
+| Commands menu | Type `/` | Type `/` |
+| Mention context | Type `@` | Type `@` |
+| Submit prompt | `Ctrl+Enter` | `Cmd+Enter` |
+| Cancel agent | `Esc` | `Esc` |
+
+### Navigation
+
+| Action | Windows/Linux | macOS |
+|--------|---------------|-------|
+| Quick file open | `Ctrl+P` | `Cmd+P` |
+| Symbol search | `Ctrl+T` | `Cmd+T` |
+| Find in file | `Ctrl+F` | `Cmd+F` |
+| Find in project | `Ctrl+Shift+F` | `Cmd+Shift+F` |
+
+---
+
+## ❓ FAQ
+
+### Q: How is Cursor different from GitHub Copilot?
+
+**A:** Cursor is a full IDE (based on VS Code) with integrated AI, while Copilot is an extension. Key differences:
+- **Speed:** Cursor Tab is 3x faster (320ms vs 890ms)
+- **Multi-file:** Composer can edit multiple files simultaneously
+- **Context:** Better codebase indexing and context management
+- **Models:** Access to Claude 4.5, GPT-5, Gemini 3, and Cursor's own Composer model
+- **Features:** Debug Mode, Parallel Agents, Visual Editor, MCP integration
+
+### Q: Does Cursor store my code?
+
+**A:** No. Code never leaves your machine. Only embeddings (for codebase indexing) are stored server-side, encrypted and obfuscated. Privacy Mode keeps everything local.
+
+### Q: Can I use Cursor with my existing VS Code setup?
+
+**A:** Yes. Cursor is built on VS Code and supports all VS Code extensions, settings, and keybindings. You can import your VS Code configuration.
+
+### Q: What's the learning curve?
+
+**A:** Basic productivity in 15 minutes. Mastery in 4 hours. Most developers see immediate value with Tab and Inline Edit.
+
+### Q: How does pricing work?
+
+**A:** Pro tier ($20/month) includes unlimited requests to all models. Free tier has limited requests. Enterprise tier available for teams.
+
+### Q: Can I use Cursor offline?
+
+**A:** Tab autocomplete works offline (cached model). Composer, Agent, and Chat require internet connection for AI models.
+
+### Q: What languages does Cursor support?
+
+**A:** All languages supported by VS Code. AI features work best with popular languages (TypeScript, Python, Go, Rust, Java, etc.).
+
+### Q: How do I get started?
+
+**A:** Download from [cursor.com](https://cursor.com), install, and follow [Part 1: Fundamentals](docs/01-fundamentals-core-concepts/) for setup.
+
+---
+
+## 🎯 Quick Start Checklist
 
 ### Week 1: Basics
-- [ ] Set up `.cursorrules` or `.cursor/rules/`
+- [ ] Install Cursor IDE
 - [ ] Create `instructions.md` for your project
-- [ ] Configure `.cursorignore` properly
+- [ ] Set up Project Rules in `.cursor/rules/` OR create `AGENTS.md`
+- [ ] Configure `.cursorignore`
 - [ ] Master Tab, Cmd+K, Cmd+I basics
 - [ ] Write first 5 prompts with good context
 
@@ -326,7 +414,7 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 ### Week 2-3: Intermediate
 - [ ] Use Composer for multi-file refactors
-- [ ] Implement TDD pattern with agent
+- [ ] Implement TDD pattern with Agent
 - [ ] Set up YOLO mode for automation
 - [ ] Create first custom command
 - [ ] Use Debug Mode successfully
@@ -344,96 +432,66 @@ This comprehensive guide covers everything you need to master Cursor IDE 2.0, fr
 
 ---
 
-## 🔧 Common Issues (Quick Fixes)
-
-| Issue | Quick Fix | Full Details |
-|-------|-----------|--------------|
-| **Slow responses** | Close tabs, clean `.cursorignore` | [Part 4, Section 8.3](docs/04-context-prompting-strategies#83-focused-context-pattern) |
-| **Hallucinations** | Use context-first approach | [Part 4, Section 8.2](docs/04-context-prompting-strategies#82-context-first-approach-anti-hallucination) |
-| **Indexing fails** | Check `.cursorignore`, restart indexing | [Part 6, Section 16.1](docs/06-troubleshooting-reference#161-cursor-wont-index-codebase) |
-| **Commands fail** | Enable YOLO mode, use non-interactive flags | [Part 6, Section 16.2](docs/06-troubleshooting-reference#162-agent-keeps-failing-to-run-commands) |
-| **Rules ignored** | Check syntax, restart Cursor | [Part 6, Section 16.4](docs/06-troubleshooting-reference#164-rules-not-applied) |
-| **MCP not connecting** | Verify env vars, check OAuth | [Part 6, Section 16.6](docs/06-troubleshooting-reference#166-mcp-servers-not-connecting) |
-
----
-
-## 💡 Best Practices Summary
-
-### Daily Workflow Checklist
-- [ ] Close irrelevant tabs before starting
-- [ ] Reference `@instructions.md` in prompts
-- [ ] Commit before major agent changes
-- [ ] Review diffs before accepting
-- [ ] Run tests after agent changes
-
-### Prompt Engineering Checklist
-- [ ] Be specific, not vague
-- [ ] Provide context (`@files`, `@docs`)
-- [ ] Include constraints (what NOT to change)
-- [ ] Specify expected output
-- [ ] Use incremental approach
-
-### Team Collaboration Checklist
-- [ ] Maintain shared rules repository
-- [ ] Update team notepads regularly
-- [ ] Document effective prompts
-- [ ] Code review agent-generated code
-- [ ] Track velocity metrics
-
----
-
-## 📚 Additional Resources
+## 📖 Additional Resources
 
 ### Official Documentation
 - **Cursor Website**: [cursor.com](https://cursor.com)
 - **Cursor Docs**: [cursor.com/docs](https://cursor.com/docs)
-- **Context7 MCP**: Latest documentation integrated throughout this guide
+- **Cursor Changelog**: [cursor.com/changelog](https://cursor.com/changelog)
 
 ### Community
-- **Discord**: [cursor.com/discord](https://cursor.com/discord)
-- **Twitter**: [@cursor](https://twitter.com/cursor)
-- **GitHub**: [github.com/getcursor](https://github.com/getcursor)
+- **Cursor Forum**: [forum.cursor.com](https://forum.cursor.com)
+- **Cursor Discord**: [cursor.com/discord](https://cursor.com/discord)
 
 ### This Guide
-- **Version**: 2.0 (December 2025)
+- **Version**: 2.0 (January 2026)
 - **Maintainer**: Viachaslau Kudzinau
 - **Email**: viachaslau_kudzinau@epam.com
 - **Feedback**: Open issues or contact maintainer
 
 ---
 
-## 🗺️ Navigation
+## 🚀 Current Status
 
-**Start reading:** [Part 1: Fundamentals & Setup →](docs/01-cursor-fundamentals)
+### ✅ Completed Sections
 
-**All parts:**
-1. [Fundamentals & Setup](docs/01-cursor-fundamentals)
-2. [Advanced Recipes & Visual Development](docs/02-advanced-recipes-visual-dev)
-3. [DevOps & Backend Architecture](docs/03-devops-backend-patterns)
-4. [Context Management & Prompting](docs/04-context-prompting-strategies)
-5. [Team Collaboration & Domain Patterns](docs/05-team-domain-patterns)
-6. [Troubleshooting & Reference](docs/06-troubleshooting-reference)
+All 6 parts and 17+ sections complete:
+- Part 1: Fundamentals & Core Concepts (3 sections)
+- Part 2: Advanced Features & Visual Development (2 sections)
+- Part 3: DevOps & Backend Architecture (2 sections)
+- Part 4: Context Management & Prompting (2 sections)
+- Part 5: Team Collaboration & Domain Patterns (3 sections)
+- Part 6: Troubleshooting & Reference (5 sections)
+
+### 📊 Guide Statistics
+
+- **Total sections:** 17+
+- **Estimated reading time:** 10-12 hours
+- **Quick start time:** 15 minutes
+- **Master path time:** 4 hours
+- **Team enablement time:** 2 hours
 
 ---
 
 ## 📝 Version History
 
-**v2.0 (December 2025) - Major Update:**
-- Complete restructure into 6 logical parts
-- Added Cursor 2.0 features (Parallel agents, Composer model, Plan Mode)
-- Added Debug Mode & Visual Editor documentation
-- Integrated latest Context7 MCP documentation
-- Added DevOps & Infrastructure patterns
-- Updated with 2025 productivity benchmarks
-- Comprehensive troubleshooting guide
-- Future-proofing and migration strategies
+**v2.0 (January 2026) - Major Restructure:**
+- Complete restructure into directory-based organization (matching copilot-guide style)
+- Updated with latest official Cursor documentation
+- Added Claude 4.5 Opus, GPT-5.2, Gemini 3 Pro, Grok Code models
+- Aligned terminology with official docs (Tab, Inline Edit, Agent, Composer)
+- Added comprehensive learning paths
+- Enhanced quick reference tables
+- Added FAQ section
+- Updated keyboard shortcuts
+- Improved navigation and structure
 
-**v1.0 (January 2025):**
-- Initial release
+**v1.0 (December 2025):**
+- Initial release with 6 parts
+- Comprehensive Cursor IDE coverage
 
 ---
 
 *This is a living document that evolves with Cursor. Bookmark, share, and contribute to keep it up-to-date!*
 
-**Master Index** | [Begin with Part 1 →](docs/01-cursor-fundamentals)
-
+**Start your journey:** [Part 1: Fundamentals & Core Concepts →](docs/01-fundamentals-core-concepts/)

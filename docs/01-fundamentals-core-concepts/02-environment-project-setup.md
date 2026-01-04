@@ -209,7 +209,7 @@ Follow existing patterns and conventions.
 
 For detailed guidelines, templates, examples, and best practices for each section, see:
 
-**📖 [Appendix A: Complete instructions.md Guide](../../appendices/instructions-md-guide.md)**
+**📖 [Appendix A: Complete instructions.md Guide](../appendices/instructions-md-guide)**
 
 ---
 

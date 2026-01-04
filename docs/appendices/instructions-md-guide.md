@@ -1,7 +1,8 @@
 ---
 title: "Appendix A: Complete instructions.md Guide"
-parent: "Appendices"
+parent: Appendices
 nav_order: 1
+permalink: /docs/appendices/instructions-md-guide/
 ---
 
 # Appendix A: Complete instructions.md Guide

@@ -6,7 +6,7 @@ nav_order: 1
 # Cursor IDE: Complete Technical Guide
 
 **Master Cursor IDE for maximum productivity**  
-**Target Audience:** Senior developers, tech leads, engineering teams
+**Target Audience:** Senior developers, tech leads, engineering teams  
 **Maintainer**: Viachaslau Kudzinau 
 (viachaslau_kudzinau@epam.com)  
 **Last Updated:** January 2026

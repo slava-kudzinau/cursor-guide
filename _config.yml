@@ -30,14 +30,6 @@ relative_links:
 # Use README.md as index
 readme_index:
   enabled: true
-  remove_originals: false
-  
-# Set README as the homepage
-defaults:
-  - scope:
-      path: "README.md"
-    values:
-      permalink: /
 
 # Extract titles from markdown headings
 titles_from_headings:

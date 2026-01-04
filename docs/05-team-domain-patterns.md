@@ -28,16 +28,31 @@ nav_order: 6
 
 **Pattern:** Centralized rules for team consistency
 
+**Option 1: Team Rules (Recommended for Team/Enterprise plans)**
+- Managed from [Cursor dashboard](https://cursor.com/dashboard?tab=team-content)
+- Centrally controlled by admins
+- Can be enforced for all team members
+- No git setup required
+- Auto-synced to all team members
+
+**Option 2: Git Submodule (Self-managed)**
 ```bash
 # Git repo: company-cursor-rules
 rules/
-├── typescript.mdc          # TS standards
-├── react-patterns.mdc      # React conventions
-├── api-conventions.mdc     # REST/GraphQL patterns
-├── testing.mdc             # Testing standards
-├── security.mdc            # Security requirements
-├── performance.mdc         # Performance guidelines
-└── git-workflow.mdc        # Git commit conventions
+├── typescript/
+│   └── RULE.md             # TS standards
+├── react-patterns/
+│   └── RULE.md             # React conventions
+├── api-conventions/
+│   └── RULE.md             # REST/GraphQL patterns
+├── testing/
+│   └── RULE.md             # Testing standards
+├── security/
+│   └── RULE.md             # Security requirements
+├── performance/
+│   └── RULE.md             # Performance guidelines
+└── git-workflow/
+    └── RULE.md             # Git commit conventions
 
 # Each project:
 git submodule add git@github.com:company/cursor-rules .cursor/rules
@@ -45,6 +60,11 @@ git submodule add git@github.com:company/cursor-rules .cursor/rules
 # Auto-sync on checkout:
 git config submodule.recurse true
 ```
+
+**Option 3: Remote Rules (GitHub Import)**
+- Import rules directly from any GitHub repo
+- `Cursor Settings > Rules > + Add Rule > Remote Rule (Github)`
+- Stays synced with source repository
 
 **Benefit:** Everyone follows same patterns, onboarding faster, code reviews easier.
 

@@ -496,10 +496,10 @@ Review all changes made in this refactoring:
 ```
 
 **Model Selection Guide:**
-- **Claude Sonnet**: Deep analysis, complex instructions, legacy code
+- **Claude 4.5 Sonnet**: Deep analysis, complex instructions, legacy code
 - **Cursor Model**: Fast execution, multi-file edits
-- **GPT-4o**: Boilerplate, speed-critical tasks
-- **Gemini**: Large context review, monorepo analysis
+- **GPT-5.2**: Boilerplate, speed-critical tasks
+- **Gemini 3 Pro**: Large context review, monorepo analysis
 
 ---
 

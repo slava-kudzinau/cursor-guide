@@ -83,14 +83,27 @@ graph TD
 **Cmd+K (Inline Edit):** Surgical changes
 - Single-file scope, focused edits
 - Shows diff (red = removed, green = added)
-- **When to use:** Refactoring a function, renaming, small fixes
+- **Terminal Integration (Ctrl+K):** Use Inline Edit directly in the Cursor terminal to generate shell commands based on your history and natural language prompt.
+- **When to use:** Refactoring a function, renaming, small fixes, or generating terminal commands.
 
 **Cmd+I (Composer):** Multi-file orchestration
-- **NEW in 2.0:** Cursor's own frontier model (4x faster)
-- Multi-file edits with dependency tracking
-- Can reference @codebase, @folder, @docs, @web
-- Built-in Plan Mode for complex tasks
-- **When to use:** Large refactors, migrations, architectural changes
+- **Plan Mode:** Dedicated mode for complex tasks where the agent outlines steps before execution.
+- **Agent Mode:** Autonomous execution with access to tools like terminal and browser.
+- **Built-in Tools:** Agents can now use a **Browser** (Chromium) to verify UI changes or fetch information, and the **Terminal** to run tests and build scripts.
+- **When to use:** Large refactors, migrations, architectural changes, or tasks requiring web verification.
+
+**Cloud Agent (NEW):**
+- Offloads agent execution to Cursor's cloud infrastructure.
+- **Benefits:** Runs in the background without blocking your local machine; accessible via web and mobile.
+- **Egress:** Supports specific IP ranges for secure infrastructure access.
+- **When to use:** Long-running tasks, heavy refactors, or when working away from your main machine.
+
+**Cursor CLI (NEW):**
+- **Installation:** Install the `cursor` command-line tool via the Command Palette.
+- **Agent in CLI:** Run `cursor agent "task"` to start an autonomous agent directly from your terminal.
+- **Shell Mode:** An AI-powered shell for natural language terminal interactions.
+- **Headless:** Support for running agents in CI/CD or remote headless environments.
+- **When to use:** Terminal-heavy workflows, automation scripts, or CI integration.
 
 **Chat (Ask/Edit/Agent Mode):** Conversational coding
 - Ask Mode: Q&A, explanations, planning
@@ -116,64 +129,53 @@ graph TD
 
 **Trade-off:** Agent/Composer have higher latency but avoid "golf the prompt" cycles. Use Tab for speed, Agent for correctness.
 
-### 1.3 Model Selection Guide (2.0)
+### 1.3 Model Selection Guide (2.0 Update)
 
 **Available Models:**
 
 **Cursor Model (Composer default)**
-- Cursor's own frontier model
+- Cursor's own frontier model (Composer 1)
 - 4x faster than comparable models
+- 200k token context window
 - Optimized for low-latency agentic coding
-- Most tasks complete in <30 seconds
 - **Best for:** Multi-file refactors, complex features
 
-**Claude 3.5 Sonnet (Chat default)**
-- Best for understanding legacy code
-- Excellent at following complex instructions
-- Strong reasoning capabilities
+**Claude 4.5 Sonnet / Opus (Chat default)**
+- Anthropic's latest frontier models
+- 200k token default context window (up to 1M in Max Mode for Sonnet)
+- Best for understanding legacy code and deep reasoning
 - **Best for:** Analysis, planning, refactoring
 
-**GPT-4o**
-- Faster than Claude for simple tasks
-- Good for boilerplate generation
-- **Best for:** Speed over complexity
+**GPT-5.1 Codex Max / 5.2**
+- OpenAI's next-generation models
+- 272k token context window
+- Excellent at following complex logic and boilerplate generation
+- **Best for:** Logic-heavy tasks, speed over complexity
 
-**Gemini 2.5 Flash**
-- 2M token context window
-- Excellent for large monorepos
-- **Best for:** Massive codebases, full-context analysis
+**Gemini 3 Flash / Pro**
+- 200k token default, up to 1M+ in Max Mode
+- Excellent for massive codebases and full-context analysis
+- **Best for:** Monorepos, long-range dependency analysis
+
+**Grok Code (xAI)**
+- 256k token context window
+- High-performance coding model
+- **Best for:** Rapid iterations and alternative logic exploration
 
 **Model Switching Strategy:**
 ```
-Planning phase → Claude Sonnet (deep analysis)
-Execution phase → Cursor Model (speed)
-Review phase → Gemini (full context)
+Planning phase → Claude 4.5 Sonnet (deep analysis)
+Execution phase → Cursor Model / GPT-5.2 (speed)
+Review phase → Gemini 3 Pro (full context)
 ```
 
-### 1.4 Context Windows & Indexing
-
-**Codebase Indexing Pipeline:**
-
-```mermaid
-graph LR
-    A[Local Files] --> B[Chunking]
-    B --> C[Embedding<br/>OpenAI/custom]
-    C --> D[Turbopuffer<br/>vector DB]
-    B --> E[Merkle Tree<br/>detects changes every 10min]
-    E --> F[Incremental Upload<br/>only changed files]
-```
+### 1.4 Context Windows & Max Mode
 
 **Key Stats:**
-- ~8,000 lines max context per request (Cursor)
-- Cursor Model: Optimized for coding context
-- Gemini 2.5: ~100,000+ lines (massive context)
-- Embeddings stored w/ obfuscated paths + line ranges
-- Code **never stored server-side** (only embeddings + metadata)
-
-**Privacy Model:**
-- Embeddings are reversible for short strings (academic attacks exist)
-- Cursor uses encryption + obfuscation to mitigate
-- Privacy Mode disables cloud indexing, keeps embeddings local
+- **Default Context:** ~200,000 tokens (~15,000 lines of code)
+- **Max Mode (NEW):** Extends context to the maximum available for specific models (Gemini 3 Pro, GPT-5.2, Grok Code).
+- **Indexing:** Background indexing via Merkle Trees + Turbopuffer (vector DB)
+- **Privacy:** Code never stored server-side (only embeddings + metadata)
 
 **When @Codebase triggers:**
 1. Query embedding computed locally
@@ -183,34 +185,46 @@ graph LR
 
 **Why Cursor is fast:** No pre-processing wait. Indexing runs in background, queries hit cached embeddings.
 
-### 1.5 Rules Architecture (2.0 Update)
+### 1.5 Rules Architecture (2026 Update)
 
-**Both formats supported:**
-- `.cursorrules` file (still recommended, not deprecated)
-- `.cursor/rules/*.mdc` (new team-shareable format)
+**Current formats:**
+- **Project Rules** (`.cursor/rules/`) - **RECOMMENDED** ✅
+  - Each rule = folder with `RULE.md` file
+  - Frontmatter metadata controls when applied
+  - Types: Always Apply, Apply Intelligently, Apply to Specific Files, Apply Manually
+- **AGENTS.md** - Simple alternative (plain markdown)
+- **User Rules** - Global preferences in Cursor Settings
+- **Team Rules** - Dashboard-managed (Team/Enterprise plans)
+- **`.cursorrules`** - **LEGACY** ⚠️ (will be deprecated)
 
-**How rules work (non-obvious):**
-- Rules are **NOT appended to system prompt**
-- They're **referenced as named tools** the agent can `fetch_rules(name)`
-- Agent sees: `{name: "typescript-patterns", description: "TS best practices"}`
-- Agent decides whether to fetch based on query relevance
+**How rules work:**
+- Rules are included in model context based on their type
+- **Always Apply**: Included in every chat
+- **Apply Intelligently**: Agent decides based on `description` field
+- **Apply to Specific Files**: When file matches `globs` pattern
+- **Apply Manually**: When @-mentioned (e.g., `@typescript`)
+
+**Rule precedence:**
+1. Team Rules (highest)
+2. Project Rules
+3. User Rules (lowest)
 
 **Implications:**
 - Write rules as **encyclopedia articles**, not commands
 - DON'T: "You are a senior engineer using React 18"
 - DO: "React 18 patterns: Use hooks, functional components. Avoid class components."
-- Multiple rules = multiple tools (agent queries selectively)
+- Use frontmatter to control when rules apply
 
-**Team Rules (NEW):**
-- Share rules via deeplinks
-- Centralized rule management for teams
-- Versioned rules in git
+**Team Rules (Team/Enterprise):**
+- Managed from Cursor dashboard
+- Can be enforced (required for all members)
+- Plain text format
+- Apply across all repositories
 
-**Rule Inheritance (Monorepos):**
-- Only ONE `.cursorrules` per workspace (limitation)
-- Workaround: Open subdirs as separate workspaces
-- Or: Use symlinks (postinstall script) to share rules
-- `.cursorignore` can ignore sibling packages
+**Nested Rules (Monorepos):**
+- Both `.cursor/rules/` and `AGENTS.md` can be nested in subdirectories
+- More specific rules take precedence
+- No need for separate workspaces
 
 ### 1.6 Model Context Protocol (MCP)
 
@@ -303,6 +317,31 @@ Context7 fetches both versions for comparison.
 - Static content (faster, cached locally)
 - Privacy-sensitive projects
 
+### 1.7 Bugbot (NEW)
+
+Bugbot is Cursor's automated PR review agent that identifies bugs, security issues, and code quality problems directly in your version control system (GitHub/GitLab).
+
+**Key Capabilities:**
+- **Automatic Reviews:** Scans every PR update and leaves comments with explanations and fix suggestions.
+- **Context-Aware:** Reads existing PR comments to avoid duplication and build on prior feedback.
+- **Custom Rules:** Uses `.cursor/BUGBOT.md` files for project-specific review standards.
+- **One-Click Fixes:** Provides links to open and fix identified issues directly in Cursor or on the web.
+
+**Setup:**
+1. Enable via **Cursor Dashboard > Integrations**.
+2. Install the Cursor GitHub/GitLab app.
+3. Add `.cursor/BUGBOT.md` to your repository (project-wide rules).
+4. (Optional) Add nested `.cursor/BUGBOT.md` files in subdirectories for more specific rules.
+
+**Usage:**
+- **Automatic:** Runs on every PR update by default.
+- **Manual:** Trigger by commenting `cursor review` or `bugbot run` on any PR.
+- **Analytics:** View performance and issue tracking on the Bugbot dashboard.
+
+**Pricing:**
+- **Free Tier:** Limited number of free PR reviews each month for Individual and Teams plans.
+- **Pro Tier:** Unlimited reviews ($40 per user per month for teams).
+
 ---
 
 ## 2. Environment & Repo Setup
@@ -353,17 +392,22 @@ Cursor Settings > Indexing & Docs > View included files
 
 **Pro tip:** Clean index = 30% faster responses (measured)
 
-### 2.2 Project Structure (2.0 Best Practices)
+### 2.2 Project Structure (2026 Best Practices)
 
 ```
 .cursor/
-├── rules/
-│   ├── typescript.mdc        # TS patterns
-│   ├── react-patterns.mdc    # Component structure
-│   ├── api-conventions.mdc   # REST/GraphQL standards
-│   ├── database.mdc          # Prisma, migrations
-│   └── testing.mdc           # Jest, Vitest, Playwright
-├── commands/                 # NEW: Reusable team prompts
+├── rules/                    # Project rules (RECOMMENDED)
+│   ├── typescript/
+│   │   └── RULE.md           # TS patterns with frontmatter
+│   ├── react-patterns/
+│   │   └── RULE.md           # Component structure
+│   ├── api-conventions/
+│   │   └── RULE.md           # REST/GraphQL standards
+│   ├── database/
+│   │   └── RULE.md           # Prisma, migrations
+│   └── testing/
+│       └── RULE.md           # Jest, Vitest, Playwright
+├── commands/                 # Reusable team prompts
 │   ├── pr-review.md          # PR review checklist
 │   ├── new-feature.md        # Feature scaffold template
 │   └── debug-prod.md         # Production debugging steps
@@ -371,11 +415,12 @@ Cursor Settings > Indexing & Docs > View included files
 │   ├── architecture.md       # System design decisions
 │   ├── troubleshooting.md    # Common issues + solutions
 │   └── sprint-context.md     # Current sprint goals
-├── mcp.json                  # MCP server configuration
-└── (legacy) .cursorrules     # Still supported, single file
+└── mcp.json                  # MCP server configuration
 
-instructions.md               # NEW: Project context (recommended)
+instructions.md               # Project context (RECOMMENDED)
+AGENTS.md                     # Simple agent instructions (alternative)
 .cursorignore                 # Indexing exclusions
+.cursorrules                  # LEGACY: Will be deprecated
 ```
 
 **NEW: `instructions.md` Pattern (HIGH ADOPTION)**
@@ -813,8 +858,16 @@ URL: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources
 ### 3.6 Lambda/Serverless Recipe
 
 **Context Setup:**
-```javascript
-// .cursor/rules/lambda-patterns.mdc
+```markdown
+# .cursor/rules/lambda-patterns/RULE.md
+---
+description: "AWS Lambda patterns and best practices"
+globs:
+  - "src/lambdas/**/*.js"
+  - "functions/**/*.ts"
+alwaysApply: false
+---
+
 # AWS Lambda Patterns
 
 ## Handler structure
@@ -919,7 +972,8 @@ Generate final version + tests.
 
 **Essential:**
 - `Cmd+K` - Inline edit (surgical changes)
-- `Cmd+I` - Composer (multi-file)
+- `Ctrl+K` - Terminal Inline Edit (generate shell commands)
+- `Cmd+I` - Composer (multi-file orchestration)
 - `Cmd+L` - Chat (with context)
 - `Cmd+Shift+L` - New chat
 - `Cmd+/` - Comment line

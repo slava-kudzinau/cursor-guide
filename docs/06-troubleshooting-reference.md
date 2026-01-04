@@ -488,7 +488,7 @@ Check coverage: [coverage command]
 
 **Speed (SWE-Bench Verified, 500 tasks):**
 - **Cursor**: 62.95s avg per task
-- GitHub Copilot (GPT-4): 89.91s avg per task
+- GitHub Copilot (GPT-5.2): 89.91s avg per task
 - **Winner:** Cursor (30% faster)
 
 **Accuracy (resolution rate):**
@@ -508,9 +508,9 @@ Check coverage: [coverage command]
 ---
 
 **Context Window:**
-- Cursor: ~8,000 lines (standard)
-- GitHub Copilot: ~8,000 lines
-- **Gemini in Cursor**: 100,000+ lines (massive context)
+- Cursor: ~200,000 tokens (default)
+- GitHub Copilot: ~200,000 tokens
+- **Gemini 3 in Cursor**: 1,000,000+ tokens (massive context)
 - **Winner:** Cursor (with Gemini option for large codebases)
 
 ---
@@ -667,12 +667,12 @@ Check coverage: [coverage command]
 
 ### 16.4 Rules Not Applied
 
-**Symptoms:** Agent ignores .cursorrules or .cursor/rules/
+**Symptoms:** Agent ignores rules in .cursor/rules/ or AGENTS.md
 
 **Solutions:**
-1. Verify syntax:
-   - Rules must be valid Markdown
-   - Check for YAML frontmatter errors in .mdc files
+1. Verify rule format (2026):
+   - Use folder structure with `RULE.md` files (not `.mdc`)
+   - Check for YAML frontmatter errors
    ```markdown
    ---
    description: TypeScript standards
@@ -682,21 +682,28 @@ Check coverage: [coverage command]
    ```
 
 2. Check location:
-   - `.cursorrules` → project root
-   - `.cursor/rules/*.mdc` → in .cursor/rules/ directory
+   - Project Rules: `.cursor/rules/[rule-name]/RULE.md`
+   - AGENTS.md: project root or subdirectories
+   - Legacy `.cursorrules`: project root (deprecated)
 
-3. Restart Cursor:
+3. Verify rule type in frontmatter:
+   - `alwaysApply: true` → Applied to every chat
+   - `alwaysApply: false` → Agent decides based on `description`
+   - `globs: ["*.ts"]` → Applied to matching files
+   - No frontmatter → Manual @-mention only
+
+4. Restart Cursor:
    - Rules loaded on startup
    - Cmd+Q (quit) then reopen
 
-4. Be explicit in prompts:
-   - Rules are tools, not system prompts
-   - Agent decides whether to fetch
+5. Check rule in settings:
+   - `Cursor Settings > Rules, Commands`
+   - Verify rule is visible and enabled
    - Force with: "Follow @typescript-standards rule"
 
 5. Check alwaysApply flag:
    ```yaml
-   # In .mdc file
+   # In RULE.md frontmatter
    alwaysApply: true  # Agent always sees this rule
    alwaysApply: false # Agent only fetches when relevant
    ```
@@ -852,7 +859,7 @@ Check coverage: [coverage command]
 **If Cursor pricing changes or company pivots:**
 
 **Option 1: GitHub Copilot (fallback)**
-- Export `.cursorrules` → Convert to Copilot instructions
+- Export rules from `.cursor/rules/RULE.md` or `AGENTS.md` → Convert to Copilot instructions
 - Keep: Autocomplete, inline edits, GitHub integration
 - Lose: Multi-file agent, Composer, codebase indexing, MCP, visual editor
 

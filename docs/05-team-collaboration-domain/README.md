@@ -28,20 +28,45 @@ Scale Cursor IDE across teams and learn domain-specific patterns.
 
 ## 📚 Sections
 
-### Section 1: Team Collaboration ✅
-- Shared rules
-- Team notepads
-- Pair programming
-- PR reviews
+### [Section 1: Team Collaboration](01-team-collaboration.md) ✅
+**Time:** 45-60 minutes
 
-### Section 2: Domain-Specific Patterns ✅
-- Kubernetes workflows
-- Data pipelines
-- ML training
+Learn how to scale Cursor IDE across your team:
+- **Shared rules repository** - Git-committed configurations for consistency
+- **Team notepads** - Collective knowledge (ADRs, postmortems, onboarding)
+- **Pair programming** - Driver-Navigator pattern with AI agents
+- **PR reviews** - AI-assisted code review workflows
+- **Onboarding automation** - Day 1 productivity for new team members
 
-### Section 3: Runbooks & Guardrails ✅
-- Project rules templates
-- YOLO mode guardrails
+**Key outcome:** Team velocity increase of 30-40%, 2-day onboarding (vs 2 weeks)
+
+---
+
+### [Section 2: Domain-Specific Patterns](02-domain-patterns.md) ✅
+**Time:** 45-60 minutes
+
+Master specialized workflows for your domain:
+- **Kubernetes workflows** - Debug production with MCP, scaling analysis, GitOps
+- **Data pipelines** - Airflow DAGs, data quality checks, ETL automation
+- **ML training** - Model training pipelines, experiment tracking, monitoring
+- **Database migrations** - Complex schema changes, zero-downtime patterns
+- **Infrastructure-as-Code** - Terraform automation, best practices
+
+**Key outcome:** Domain expertise + AI = 3-5x faster specialized tasks
+
+---
+
+### [Section 3: Runbooks & Guardrails](03-runbooks-guardrails.md) ✅
+**Time:** 30-45 minutes
+
+Build safety systems for productive automation:
+- **YOLO mode guardrails** - Prevent dangerous operations automatically
+- **Project rules templates** - Ready-to-use configs for React, Python, Node.js
+- **Incident response runbooks** - AI-assisted troubleshooting playbooks
+- **Safe automation patterns** - Dry-run, gradual rollout, feature flags
+- **Mistake prevention** - Pre-commit hooks, test requirements, checklists
+
+**Key outcome:** Fast iteration with safety nets, zero production incidents from AI
 
 ---
 

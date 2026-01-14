@@ -20,11 +20,14 @@ This comprehensive guide teaches you to leverage **Cursor IDE** for:
 - ✅ **Tab autocomplete** - Fast, predictive code completion (320ms)
 - ✅ **Inline Edit (Cmd+K)** - Surgical, focused changes
 - ✅ **Composer/Agent (Cmd+I)** - Multi-file orchestration
+- ✅ **Rules** - Always-on constraints and guardrails (`.cursor/rules/*.md`)
+- ✅ **Skills** - Optional reusable workflows (`.cursor/skills/`)
+- ✅ **Hooks** - Lifecycle control for autonomous iteration (`.cursor/hooks.json`)
 - ✅ **Debug Mode** - Hypothesis-driven debugging
 - ✅ **Parallel Agents** - Explore multiple solutions simultaneously
 - ✅ **Visual Editor** - Real-time UI styling and design
 - ✅ **MCP Integration** - Connect to external systems (Slack, GitHub, databases)
-- ✅ **Context7** - Live, version-specific library documentation
+- ✅ **Context7** - Live, version-specific library documentation (MCP tool)
 - ✅ **Multiple AI models** - Claude 4.5, GPT-5, Gemini 3, Cursor Composer
 - ✅ **Enterprise patterns** - Team collaboration and deployment
 
@@ -75,6 +78,9 @@ Learn how Cursor thinks: Tab vs Inline Edit vs Composer vs Agent, AI model selec
 - Tool selection matrix (Tab, Cmd+K, Cmd+I, Debug Mode, Parallel Agents)
 - 8 AI models and when to use each
 - Context windows and codebase indexing
+- Rules, Skills, and Instructions hierarchy
+- Skills architecture for reusable workflows
+- Hooks for lifecycle control and autonomous iteration
 - Rules architecture (Project Rules, AGENTS.md, Team Rules)
 - Model Context Protocol (MCP) and Context7
 
@@ -90,7 +96,10 @@ Install Cursor, configure workspace, create `instructions.md`, set up rules, and
 - Installation and subscription tiers
 - Codebase indexing strategies (small repos vs monorepos)
 - `instructions.md` pattern (single source of truth)
-- Project Rules (`.cursor/rules/`) or AGENTS.md setup
+- Rules vs Skills vs Instructions decision framework
+- Project Rules (`.cursor/rules/*.md`) setup
+- Skills for reusable workflows (`.cursor/skills/`)
+- Hooks for lifecycle control (`.cursor/hooks.json`)
 - `.cursorignore` configuration
 - Commands feature for reusable prompts
 - Monorepo best practices
@@ -104,7 +113,9 @@ Install Cursor, configure workspace, create `instructions.md`, set up rules, and
 Master essential daily development workflows with Cursor.
 
 **Key workflows:**
-- TDD pattern (test-first with Agent)
+- TDD pattern with skills and hooks (test-first with autonomous iteration)
+- Test-loop skill for TDD automation
+- Hooks + YOLO mode for verification loops
 - Refactoring pattern (multi-step, incremental)
 - Debug Mode workflow (hypothesis-driven)
 - Parallel agents (exploring multiple approaches)
@@ -154,9 +165,9 @@ Mastering context and advanced prompts.
 
 Teamwork and specialized workflows.
 
-- Team collaboration (shared rules, team notepads, pair programming, PR reviews)
+- Team collaboration (shared rules, skills, team notepads, pair programming, PR reviews)
 - Domain-specific patterns (Kubernetes, data pipelines, ML training)
-- Runbooks & guardrails (project rules templates, YOLO mode guardrails)
+- Runbooks & guardrails (project rules templates, hook-based safety, YOLO + hooks)
 
 ---
 
@@ -407,7 +418,8 @@ graph TB
 ### Week 1: Basics
 - [ ] Install Cursor IDE
 - [ ] Create `instructions.md` for your project
-- [ ] Set up Project Rules in `.cursor/rules/` OR create `AGENTS.md`
+- [ ] Set up Project Rules in `.cursor/rules/*.md` OR create `AGENTS.md`
+- [ ] Understand Rules vs Skills vs Instructions
 - [ ] Configure `.cursorignore`
 - [ ] Master Tab, Cmd+K, Cmd+I basics
 - [ ] Write first 5 prompts with good context
@@ -416,21 +428,25 @@ graph TB
 
 ### Week 2-3: Intermediate
 - [ ] Use Composer for multi-file refactors
-- [ ] Implement TDD pattern with Agent
-- [ ] Set up YOLO mode for automation
+- [ ] Create first skill (e.g., test-loop)
+- [ ] Set up hooks for verification loops
+- [ ] Implement TDD pattern with skills + hooks
+- [ ] Set up YOLO mode with hooks for automation
 - [ ] Create first custom command
 - [ ] Use Debug Mode successfully
 
-**Checkpoint:** Handle complex tasks independently
+**Checkpoint:** Handle complex tasks independently with autonomous workflows
 
 ### Week 4+: Advanced
 - [ ] Run parallel agents
+- [ ] Create team skills library
 - [ ] Use MCP for live infrastructure access
 - [ ] Implement team notepads
-- [ ] Create shared rules repository
+- [ ] Create shared rules and skills repository
+- [ ] Set up hook-based safety guardrails
 - [ ] Train team members
 
-**Checkpoint:** 30-40% velocity improvement, team adoption
+**Checkpoint:** 30-40% velocity improvement, team adoption, autonomous workflows
 
 ---
 

@@ -17,14 +17,16 @@ nav_order: 3
 This section covers essential daily development workflows that will transform how you code with Cursor IDE.
 
 **What you'll learn:**
-- TDD workflow with Agent (test-first pattern)
+- TDD workflow with skills and hooks (test-first pattern)
+- Test-loop skill for autonomous TDD iteration
+- Hooks for verification loops (YOLO + hooks)
 - Refactoring pattern (multi-step, incremental)
 - Debug Mode workflow (hypothesis-driven)
 - Parallel agents (exploring multiple approaches)
 - Infrastructure-as-Code workflows
 - Progressive enhancement pattern
 
-**Why this matters:** These workflows are battle-tested patterns that maximize productivity while maintaining code quality.
+**Why this matters:** These workflows leverage skills and hooks for autonomous iteration, maximizing productivity while maintaining code quality.
 
 ---
 
@@ -76,15 +78,54 @@ DO NOT PROCEED to implementation until tests are reviewed.
 - Agent iterates → no manual debugging loop
 - YOLO mode (auto-run commands) closes the loop
 
-### YOLO Mode Setup
+### YOLO Mode + Hooks Setup
 
+**YOLO Mode** enables autonomous command execution without confirmation at each step.
+
+**Hooks** control when the agent stops iterating, enabling true autonomous loops.
+
+**Settings > Agent > YOLO Mode**
 ```
-Settings > Agent > YOLO Mode
 Prompt: "Any tests (vitest, npm test, nr test), build commands (tsc, build), and file ops (mkdir, touch) are always allowed."
 
 Allow list: test, build, tsc, mkdir, touch
 Deny list: rm -rf, drop database, curl (unless specified)
 ```
+
+**Configure Stop Hook** (`.cursor/hooks.json`):
+```json
+{
+  "hooks": {
+    "stop": {
+      "script": "./scripts/stop-when-tests-pass.sh",
+      "description": "Continue until all tests pass"
+    }
+  }
+}
+```
+
+**Hook Script** (`./scripts/stop-when-tests-pass.sh`):
+```bash
+#!/bin/bash
+# Exit 0 = continue, Exit 1 = stop
+
+npm test --silent
+
+if [ $? -eq 0 ]; then
+  echo "✅ All tests passing - stopping"
+  exit 1  # Stop
+else
+  echo "❌ Tests failing - continuing"
+  exit 0  # Continue
+fi
+```
+
+**Make executable:**
+```bash
+chmod +x scripts/stop-when-tests-pass.sh
+```
+
+**With YOLO + Hooks:** Agent loops automatically, fixing code until tests pass, without any user intervention.
 
 ### Example Flow
 
@@ -92,8 +133,52 @@ Deny list: rm -rf, drop database, curl (unless specified)
 2. You review tests → approve
 3. Agent creates `markdown.ts` implementation
 4. Agent runs `npm test`
-5. If failures: Agent reads errors → fixes → re-runs
-6. If pass: Agent reports success
+5. If failures: Agent reads errors → fixes → re-runs (hooks control iteration)
+6. If pass: Hook detects success → stops automatically
+7. Agent reports completion
+
+### Using the Test-Loop Skill
+
+Instead of manually describing the TDD workflow every time, use the `test-loop` skill:
+
+**Create the skill** (`.cursor/skills/test-loop/SKILL.md`):
+```markdown
+---
+name: "test-loop"
+description: "Run tests, fix failures, iterate until all pass"
+commands:
+  - "test-loop"
+  - "tdd"
+---
+
+# Test-Fix-Iterate Loop
+
+## Workflow
+1. Run test suite
+2. Analyze failures
+3. Fix code
+4. Re-run tests
+5. Repeat until all tests pass
+
+## Success Criteria
+- All tests passing ✅
+- No warnings
+- Coverage maintained
+```
+
+**Invoke the skill:**
+```
+/test-loop
+
+@instructions.md Implement password reset feature with comprehensive tests.
+```
+
+**Automatic activation:**
+```
+@instructions.md Implement user registration using TDD approach.
+```
+
+Agent will automatically recognize "TDD approach" and activate the test-loop skill.
 
 ---
 
@@ -368,7 +453,7 @@ URL: https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources
 ### Context Setup
 
 ```markdown
-# .cursor/rules/lambda-patterns/RULE.md
+# .cursor/rules/lambda-patterns.md
 ---
 description: "AWS Lambda patterns and best practices"
 globs:
@@ -524,7 +609,20 @@ Generate final version + tests.
 - Write tests first
 - Agent implements
 - Auto-run tests with YOLO mode
-- Iterate until passing
+- Hooks control iteration (continue until tests pass)
+- Use test-loop skill for reusable TDD workflow
+
+### Skills for Workflows
+- Create skills for multi-step patterns
+- Skills activate automatically or via slash commands
+- Examples: test-loop, scaffold-package, api-migration
+- Reusable across projects and contexts
+
+### Hooks for Control Flow
+- Hooks determine when agent stops iterating
+- Combine YOLO mode + hooks = autonomous iteration
+- Stop hooks: continue until condition met (tests pass, coverage reached)
+- Keep hooks fast and simple (< 5 seconds)
 
 ### Refactoring Pattern
 - Analyze first

@@ -18,6 +18,11 @@ Comprehensive guide for creating and maintaining effective `instructions.md` fil
 
 **Referenced from:** [Environment & Project Setup](../01-fundamentals-core-concepts/02-environment-project-setup.md)
 
+### [Appendix B: /project-init System Prompt](./project-init-prompt)
+Complete system prompt for automating the extraction of Rules, Skills, and Instructions from architecture specifications. Includes practical usage examples for scaffolding new projects with consistent Cursor IDE configuration.
+
+**Referenced from:** [Environment & Project Setup](../01-fundamentals-core-concepts/02-environment-project-setup.md)
+
 ---
 
 ## 🎯 Purpose

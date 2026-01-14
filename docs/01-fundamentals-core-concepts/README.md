@@ -71,7 +71,7 @@ Part 1 establishes the foundational knowledge you need to use Cursor IDE effecti
 ✅ Install Cursor IDE
 ✅ Sign in to your account
 ✅ Create instructions.md
-✅ Create .cursor/rules/ with RULE.md files OR create AGENTS.md
+✅ Create .cursor/rules/ with .md rule files OR create AGENTS.md
 ✅ Configure .cursorignore
 ✅ Test Tab, Inline Edit, and Agent
 ```
@@ -224,7 +224,7 @@ graph TB
 | **CLI Agent** | Terminal-based autonomous AI | `cursor agent "task"` |
 | **Bugbot** | Automated PR reviews | `.cursor/BUGBOT.md` |
 | **MCP** | External tool integration | `.cursor/mcp.json` |
-| **Rules** | Project-specific guardrails | `.cursor/rules/*/RULE.md` |
+| **Rules** | Project-specific guardrails | `.cursor/rules/*.md` |
 | **Parallel Agents** | Simultaneous task execution | `Cmd+Shift+P` > Parallel Agents |
 
 ### When to Use Each Feature

@@ -208,7 +208,7 @@ Cursor provides several @ mention types for precise context control:
 | **Codebase** | `@codebase` | Architectural questions, pattern search | Large (full repo) |
 | **Instructions** | `@instructions.md` | Project conventions (auto-included) | Small (~200 lines) |
 | **Web** | `@web` | Latest docs, breaking news | Medium (search results) |
-| **Context7** | Auto-invoked | Version-specific library docs | Medium (~2k lines) |
+| **Context7** | Auto-invoked (MCP tool) | Version-specific library docs | Medium (~2k lines) |
 | **Docs** | `@react-docs.org` | Static documentation sites | Medium (~5k lines) |
 
 ### When to Use Each @ Mention
@@ -300,6 +300,73 @@ Better: "@src/components/UserProfile.tsx @src/hooks/useUser.ts
 ```
 
 **Pro tip**: Combine with `@codebase` to apply external knowledge to your project.
+
+---
+
+#### 5. Context7 - Version-Specific Library Documentation (MCP Tool)
+
+**What is Context7:**
+- **MCP (Model Context Protocol) tool** pre-configured in Cursor 2.0
+- Provides real-time, version-specific library documentation
+- Automatically invoked by agent when needed (no explicit @ mention required)
+- 10,000+ libraries with official docs and code examples
+
+**Use when:**
+- Need current library APIs (not in training data)
+- Specific version documentation (e.g., React Query v5.62.0)
+- Setup/configuration steps for libraries
+- Migration guides between versions
+
+**How it works:**
+1. Agent detects need for library documentation
+2. Automatically invokes Context7 MCP tool
+3. Context7 fetches version-specific docs
+4. Agent uses fresh documentation to generate code
+
+**Example (automatic invocation):**
+```
+"@instructions.md Implement file upload using AWS SDK v3 S3 client.
+ Follow latest best practices."
+```
+
+Agent will:
+1. Recognize need for AWS SDK v3 documentation
+2. Invoke Context7 tool automatically (you'll see 🔧 tool indicator)
+3. Fetch current v3 API documentation
+4. Generate code using latest S3 client patterns
+
+**Example (explicit mention):**
+```
+"Use React Query v5.62.0 to implement data fetching.
+ Check Context7 for version-specific breaking changes from v4."
+```
+
+**Context7 vs @Docs vs @Web:**
+
+| Feature | Context7 | @Docs | @Web |
+|---------|----------|-------|------|
+| **Type** | MCP tool | Static docs | Web search |
+| **Invocation** | Automatic | Manual (`@docs-site`) | Manual (`@web`) |
+| **Updates** | Live, version-specific | Static snapshot | Live search results |
+| **Quality** | Official library docs | Depends on source | Variable quality |
+| **Speed** | Fast (dedicated tool) | Fast (cached) | Slower (search) |
+| **Best for** | Library APIs | Internal docs | News, updates |
+
+**Pro tips:**
+- Watch for 🔧 tool indicators to see when Context7 is used
+- Ask agent to cite version numbers to confirm Context7 was invoked
+- Context7 supplements training data, doesn't replace project architecture
+- Use for current library APIs, not architectural decisions
+
+**When Context7 beats @Docs:**
+- Library updates frequently (React, Next.js, AWS SDK)
+- Need specific version (not latest)
+- Training data is > 6 months old
+
+**When to use @Docs instead:**
+- Custom/internal documentation
+- Static content (faster, cached locally)
+- Privacy-sensitive projects (no external calls)
 
 ---
 
@@ -996,13 +1063,13 @@ Before every interaction with Cursor:
 ### @ Mention Cheat Sheet
 
 ```
-@file.ts              → Single file context
-@folder/              → Multiple related files
-@codebase             → Full repository search
-@instructions.md      → Project conventions (auto-included)
-@web                  → Latest web information
-Context7 (automatic)  → Version-specific docs
-@docs-site.com        → Static documentation
+@file.ts                    → Single file context
+@folder/                    → Multiple related files
+@codebase                   → Full repository search
+@instructions.md            → Project conventions (auto-included)
+@web                        → Latest web information
+Context7 (MCP tool)         → Version-specific docs (automatic)
+@docs-site.com              → Static documentation
 ```
 
 ### Context Budget Rules

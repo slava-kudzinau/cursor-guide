@@ -21,7 +21,10 @@ Before diving into Cursor IDE, you need to understand **how it thinks** and **ho
 - How different AI models work and when to use each
 - The architecture of Tab, Inline Edit, Agent, and Composer
 - How codebase indexing and context management work
-- Rules architecture and Model Context Protocol (MCP)
+- Rules, Skills, and Instructions hierarchy
+- Skills architecture for reusable workflows
+- Hooks for lifecycle control
+- Model Context Protocol (MCP)
 
 **Why this matters:** Understanding these concepts prevents frustration and unlocks Cursor's full potential. You'll know *why* something works, not just *how* to use it.
 
@@ -347,16 +350,67 @@ graph LR
 
 ---
 
+## 📜 Rules, Skills, and Instructions: The Decision Hierarchy
+
+### Understanding the Three-Tier System
+
+Cursor uses a three-tier system for guiding AI behavior:
+
+1. **Rules** - Always-on guardrails and constraints
+2. **Skills** - Optional, reusable workflows
+3. **Instructions** - Project context and documentation
+
+```mermaid
+graph TD
+    A[User Request] --> B{Check Rules}
+    B -->|Rules Apply| C[Enforce Constraints]
+    C --> D{Relevant Skill?}
+    B -->|No Rules| D
+    D -->|Skill Found| E[Execute Skill Workflow]
+    D -->|No Skill| F[Use Instructions]
+    E --> G[Generate Response]
+    F --> G
+    
+    style B fill:#ffe4e1
+    style D fill:#fff4e1
+    style F fill:#e1f5ff
+    style G fill:#d4edda
+```
+
+### Decision Framework: Rules vs Skills vs Instructions
+
+**Before creating any guidance file, ask:**
+
+| Question | Answer → Type | Purpose |
+|----------|---------------|---------|
+| **Must this ALWAYS hold?** | → **Rule** | Non-negotiable constraints |
+| **Is this a reusable workflow?** | → **Skill** | Optional productivity pattern |
+| **Does this explain context/intent?** | → **Instructions** | Understanding and background |
+
+**Examples:**
+
+| Guidance | Type | Reasoning |
+|----------|------|-----------|
+| "Use TypeScript strict mode" | Rule | Must always apply |
+| "Refactor API endpoints workflow" | Skill | Useful sometimes, optional |
+| "Why we chose Fastify over Express" | Instructions | Context and rationale |
+| "Never commit secrets" | Rule | Critical safety constraint |
+| "Test-fix-iterate loop" | Skill | Productivity pattern |
+| "Current sprint goals" | Instructions | Project context |
+
+---
+
 ## 📜 Rules Architecture
 
 ### Current Format (2026)
 
 Cursor rules have evolved to a more powerful structure:
 
-- **Project Rules** (`.cursor/rules/`) - **RECOMMENDED** ✅
-  - Each rule is a folder with `RULE.md` file
+- **Project Rules** (`.cursor/rules/*.md`) - **RECOMMENDED** ✅
+  - Any `.md` file in `.cursor/rules/` directories
   - Frontmatter metadata controls when rules apply
   - Version-controlled and scoped to your codebase
+  - Cursor recursively loads all `.md` files
   
 - **AGENTS.md** - Simple alternative
   - Plain markdown file in project root
@@ -451,6 +505,335 @@ project/
 - Granular control per area of codebase
 - More specific instructions take precedence
 - No need for separate workspaces
+
+---
+
+## 🎨 Skills Architecture
+
+**Skills** are optional, reusable workflows that agents can invoke when relevant. Unlike rules (always on), skills activate conditionally based on task context.
+
+### What Are Skills?
+
+Skills are **micro-workflows** stored in `.cursor/skills/<skill-name>/SKILL.md` that:
+- Are **optional** - Agent chooses when to use them
+- Are **reusable** - Work across different contexts
+- Are **composable** - Can be combined with other skills
+- Have **clear activation conditions** - Agent knows when they're relevant
+
+### Skills Structure
+
+```
+.cursor/skills/
+  test-loop/
+    SKILL.md              # Skill definition
+  scaffold-package/
+    SKILL.md
+  api-migration/
+    SKILL.md
+  code-review/
+    SKILL.md
+```
+
+### Skill File Format
+
+**`.cursor/skills/test-loop/SKILL.md`:**
+```markdown
+---
+name: "test-loop"
+description: "Run tests, fix failures, iterate until all pass"
+commands:
+  - "test-loop"
+  - "tdd"
+---
+
+# Test-Fix-Iterate Loop
+
+## When to Use
+- Implementing TDD workflow
+- Fixing failing tests
+- Ensuring test coverage
+
+## Workflow
+1. Run test suite
+2. If failures exist:
+   - Analyze failure messages
+   - Identify root cause
+   - Apply fix
+   - Re-run tests
+3. Repeat until all tests pass
+4. Report final status
+
+## Success Criteria
+- All tests passing
+- No warnings in output
+- Code coverage maintained or improved
+
+## Example Usage
+```bash
+npm test
+# Analyze failures
+# Fix code
+npm test
+# Repeat until green
+```
+```
+
+### Skills vs Rules: Key Differences
+
+| Dimension | Rules | Skills |
+|-----------|-------|--------|
+| **Scope** | Global, always active | Situational, conditional |
+| **Activation** | Automatic | Agent decides or user invokes |
+| **Optional** | ❌ No - always enforced | ✅ Yes - used when relevant |
+| **Best for** | Guardrails, standards | Productivity workflows |
+| **Examples** | "Use TypeScript strict", "Never commit secrets" | "TDD loop", "Refactor workflow" |
+| **Override** | Cannot be ignored | Can be skipped if not relevant |
+
+### Agent Skill Selection
+
+**How agents choose skills:**
+
+1. **Automatic selection** - Agent analyzes request and goal
+   - Matches goal to skill descriptions
+   - Considers current context
+   - Invokes relevant skills automatically
+
+2. **Manual invocation** - User explicitly requests
+   - Via slash commands: `/test-loop`
+   - In prompts: "Use the test-loop skill"
+   - In follow-ups: "Apply code-review skill"
+
+3. **Chaining** - Multiple skills in sequence
+   - Agent can combine skills
+   - Example: scaffold-package → test-loop → code-review
+
+### Example Skills
+
+**1. Test-Loop Skill**
+```markdown
+Purpose: TDD workflow automation
+Workflow: test → fix → test → repeat
+Success: All tests green
+```
+
+**2. Scaffold-Package Skill**
+```markdown
+Purpose: Create new workspace package
+Workflow: directory → package.json → tsconfig → README → tests
+Success: Package compiles and has initial tests
+```
+
+**3. API Migration Skill**
+```markdown
+Purpose: Migrate REST endpoints to GraphQL
+Workflow: analyze → plan → schema → resolvers → tests → docs
+Success: Feature parity with original REST API
+```
+
+**4. Code Review Skill**
+```markdown
+Purpose: Automated code review checklist
+Workflow: security → performance → tests → style → docs
+Success: All checks pass, issues documented
+```
+
+### When to Create a Skill
+
+Create a skill when you have a:
+- ✅ **Multi-step workflow** that's repeatable
+- ✅ **Common pattern** used across projects
+- ✅ **Optional process** that doesn't always apply
+- ✅ **Clear success criteria** to know when it's done
+
+Don't create a skill for:
+- ❌ **Always-on constraints** → Use Rules instead
+- ❌ **One-time tasks** → Use direct prompts
+- ❌ **Project-specific context** → Use Instructions
+- ❌ **Simple one-step actions** → Use direct commands
+
+---
+
+## 🪝 Hooks: Lifecycle Control
+
+**Hooks** extend agent control flow by running scripts before/after agent actions. They enable verification loops, safety checks, and stop conditions.
+
+### What Are Hooks?
+
+Hooks are **lifecycle interceptors** that:
+- Run at specific points in agent execution
+- Can stop or continue agent loops
+- Enable verification and validation
+- Provide safety guardrails
+
+### Hooks Configuration
+
+**Configuration file:** `.cursor/hooks.json`
+
+```json
+{
+  "hooks": {
+    "stop": {
+      "script": "./scripts/should-stop.sh",
+      "description": "Determines if agent should continue or stop"
+    }
+  }
+}
+```
+
+### Hook Types
+
+#### 1. Stop Hook
+
+Controls when the agent should stop iterating.
+
+**`.cursor/hooks.json`:**
+```json
+{
+  "hooks": {
+    "stop": {
+      "script": "./scripts/stop-hook.sh",
+      "description": "Continue until all tests pass"
+    }
+  }
+}
+```
+
+**`./scripts/stop-hook.sh`:**
+```bash
+#!/bin/bash
+# Exit 0 = continue, Exit 1 = stop
+
+# Run tests
+npm test --silent
+
+# If tests pass, stop iterating
+if [ $? -eq 0 ]; then
+  echo "✅ All tests passing - stopping"
+  exit 1  # Stop
+else
+  echo "❌ Tests failing - continuing"
+  exit 0  # Continue
+fi
+```
+
+### Hook Use Cases
+
+#### 1. Verification Loops
+
+**Scenario:** Continue until tests pass
+
+```bash
+#!/bin/bash
+# stop-hook.sh
+npm test
+[ $? -eq 0 ] && exit 1 || exit 0
+```
+
+**Behavior:** Agent keeps fixing code until tests pass, then stops automatically.
+
+---
+
+#### 2. Safety Checks
+
+**Scenario:** Stop if production environment detected
+
+```bash
+#!/bin/bash
+# stop-hook.sh
+if [ "$ENVIRONMENT" = "production" ]; then
+  echo "🚨 Production environment detected - stopping"
+  exit 1  # Stop immediately
+fi
+exit 0  # Continue
+```
+
+**Behavior:** Agent immediately halts if it detects production context.
+
+---
+
+#### 3. Quality Gates
+
+**Scenario:** Stop if code coverage drops below threshold
+
+```bash
+#!/bin/bash
+# stop-hook.sh
+coverage=$(npm test --coverage --silent | grep "Statements" | awk '{print $3}' | tr -d '%')
+
+if [ "$coverage" -lt 80 ]; then
+  echo "❌ Coverage ${coverage}% < 80% - continuing"
+  exit 0  # Continue fixing
+else
+  echo "✅ Coverage ${coverage}% ≥ 80% - stopping"
+  exit 1  # Stop
+fi
+```
+
+**Behavior:** Agent continues improving code until coverage reaches 80%.
+
+---
+
+#### 4. Build Verification
+
+**Scenario:** Continue until build succeeds
+
+```bash
+#!/bin/bash
+# stop-hook.sh
+npm run build 2>/dev/null
+[ $? -eq 0 ] && exit 1 || exit 0
+```
+
+**Behavior:** Agent fixes build errors iteratively until successful.
+
+### YOLO Mode + Hooks = Autonomous Iteration
+
+**Traditional YOLO mode:** Agent executes commands automatically but stops after each step.
+
+**YOLO + Hooks:** Agent executes AND loops automatically based on hook logic.
+
+**Example: TDD Loop with Hooks**
+
+```markdown
+Prompt: "Implement user authentication with TDD"
+
+Hook: Continue until tests pass
+
+Agent behavior:
+1. Write tests
+2. Run tests (fail)
+3. Implement code
+4. Run tests (fail)
+5. Fix bugs
+6. Run tests (pass) ← Hook stops here
+7. Report completion
+```
+
+**Without hooks:** Agent would stop at step 2 and wait for user input.  
+**With hooks:** Agent loops through steps 2-6 automatically until tests pass.
+
+### Hooks vs Skills vs Rules
+
+| Feature | Rules | Skills | Hooks |
+|---------|-------|--------|-------|
+| **Purpose** | Constraints | Workflows | Control flow |
+| **When applied** | Always | When relevant | At lifecycle points |
+| **User control** | No override | Optional invocation | Automatic |
+| **Example** | "Use TypeScript" | "TDD workflow" | "Stop when tests pass" |
+
+### Hooks Best Practices
+
+✅ **Do:**
+- Keep hooks fast (< 5 seconds)
+- Use clear exit codes (0 = continue, 1 = stop)
+- Log hook decisions for debugging
+- Test hooks independently
+
+❌ **Don't:**
+- Make hooks slow (blocks agent)
+- Use complex logic (keep hooks simple)
+- Forget to handle errors (use set -e)
+- Hardcode values (use env vars)
 
 ---
 
@@ -580,11 +963,24 @@ Ask agent to cite version number. If it shows exact recent version (e.g., "v5.62
 - Use `@codebase` for semantic search
 - Embeddings stored securely, code never leaves machine
 
-### Rules Architecture
-- Write rules as encyclopedia articles with frontmatter metadata
-- Use `.cursor/rules/*/RULE.md` folder structure (2026 format)
-- Or use `AGENTS.md` for simple instructions
+### Rules, Skills, and Instructions
+- **Rules** (`.cursor/rules/*.md`) - Always-on constraints and guardrails
+- **Skills** (`.cursor/skills/*/SKILL.md`) - Optional reusable workflows
+- **Instructions** (`INSTRUCTIONS.md`) - Project context and documentation
+- Decision framework: "Must always hold?" → Rule, "Useful sometimes?" → Skill, "Explains intent?" → Instructions
 - Team Rules managed from dashboard
+
+### Skills Architecture
+- Skills are optional workflows that activate conditionally
+- Agent selects skills automatically or via slash commands
+- Examples: test-loop, scaffold-package, api-migration
+- Create skills for repeatable multi-step patterns
+
+### Hooks for Control Flow
+- Hooks control agent iteration lifecycle
+- Stop hooks determine when agent should stop
+- Enable verification loops (continue until tests pass)
+- Combine with YOLO mode for autonomous iteration
 
 ### MCP Integration
 - Connect to external systems (Slack, GitHub, databases)

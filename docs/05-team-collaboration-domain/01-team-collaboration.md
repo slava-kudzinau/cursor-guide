@@ -42,11 +42,11 @@ Teams without shared Cursor configurations experience:
 your-repo/
 ├── .cursor/
 │   └── rules/
-│       ├── 00-project-context.mdrule
-│       ├── 01-architecture.mdrule
-│       ├── 02-code-standards.mdrule
-│       ├── 03-testing.mdrule
-│       └── 04-security.mdrule
+│       ├── 00-project-context.md
+│       ├── 01-architecture.md
+│       ├── 02-code-standards.md
+│       ├── 03-testing.md
+│       └── 04-security.md
 ├── .cursorignore
 ├── instructions.md          # Single source of truth
 └── AGENTS.md               # Alternative to .cursor/rules/
@@ -58,7 +58,7 @@ your-repo/
 
 ### Example: Team Project Rules
 
-**File: `.cursor/rules/00-project-context.mdrule`**
+**File: `.cursor/rules/00-project-context.md`**
 ```markdown
 # Project Context
 
@@ -81,7 +81,7 @@ your-repo/
 4. Comprehensive error handling
 ```
 
-**File: `.cursor/rules/02-code-standards.mdrule`**
+**File: `.cursor/rules/02-code-standards.md`**
 ```markdown
 # Code Standards
 
@@ -315,7 +315,7 @@ similar connection pool issues. Create tickets for each.
 
 ### Day 2: First Commit
 - [ ] Read `instructions.md` (single source of truth)
-- [ ] Read `.cursor/rules/00-project-context.mdrule`
+- [ ] Read `.cursor/rules/00-project-context.md`
 - [ ] Review `team-notes/architecture-overview.md`
 - [ ] Pick "good-first-issue" from Jira
 - [ ] Use Cursor to implement fix
@@ -447,7 +447,7 @@ Cmd+K
 ```
 Cmd+K on selected code
 "Refactor this to follow our error handling pattern in
-@.cursor/rules/02-code-standards.mdrule"
+@.cursor/rules/02-code-standards.md"
 ```
 
 #### Author Workflow (Self-Review)
@@ -471,7 +471,7 @@ Provide a checklist of issues to fix before PR submission."
 
 ### PR Review Checklist (Team Standard)
 
-**File: `.cursor/rules/03-pr-review-checklist.mdrule`**
+**File: `.cursor/rules/03-pr-review-checklist.md`**
 ```markdown
 # PR Review Checklist
 
@@ -522,7 +522,7 @@ Provide a checklist of issues to fix before PR submission."
 ```
 Cmd+I
 "Review my PR against our checklist:
-@.cursor/rules/03-pr-review-checklist.mdrule
+@.cursor/rules/03-pr-review-checklist.md
 @git-diff
 
 Create a table showing which items pass/fail and specific actions needed."
@@ -619,7 +619,7 @@ Convert this JavaScript code to TypeScript following our standards:
 1. Add strict types (no `any`)
 2. Use interfaces from `@libs/shared/types/`
 3. Add JSDoc comments
-4. Follow naming conventions in @.cursor/rules/02-code-standards.mdrule
+4. Follow naming conventions in @.cursor/rules/02-code-standards.md
 
 Selected code: {SELECTION}
 ```

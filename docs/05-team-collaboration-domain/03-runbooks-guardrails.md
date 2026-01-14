@@ -284,7 +284,7 @@ Agent will:
 
 ### Example: Production Safety Guardrails
 
-**File: `.cursor/rules/00-safety-guardrails.mdrule`**
+**File: `.cursor/rules/00-safety-guardrails.md`**
 ```markdown
 # Safety Guardrails
 
@@ -549,7 +549,7 @@ if (requireConfirmation(risk)) {
 
 **Integration with Cursor:**
 ```markdown
-# File: .cursor/rules/01-command-validation.mdrule
+# File: .cursor/rules/01-command-validation.md
 
 Before executing ANY command:
 1. Run it through validation: `ts-node .cursor/scripts/validate-command.ts "<command>"`
@@ -564,7 +564,7 @@ Before executing ANY command:
 
 ### Template 1: React + TypeScript + Node.js
 
-**File: `.cursor/rules/template-react-typescript-node.mdrule`**
+**File: `.cursor/rules/template-react-typescript-node.md`**
 ```markdown
 # React + TypeScript + Node.js Project Rules
 
@@ -753,7 +753,7 @@ npm run migrate:down  # Rollback migration
 
 ### Template 2: Python + FastAPI + PostgreSQL
 
-**File: `.cursor/rules/template-python-fastapi.mdrule`**
+**File: `.cursor/rules/template-python-fastapi.md`**
 ```markdown
 # Python + FastAPI + PostgreSQL Project Rules
 
@@ -1165,7 +1165,7 @@ Document the incident in `runbooks/incidents/`:
 **Always test commands with dry-run before execution:**
 
 ```markdown
-# File: .cursor/rules/02-dry-run-pattern.mdrule
+# File: .cursor/rules/02-dry-run-pattern.md
 
 For any deployment or infrastructure change:
 1. Run with --dry-run first
@@ -1306,7 +1306,7 @@ fi
 
 **Prevention: Required test coverage**
 
-**File: `.cursor/rules/03-test-requirements.mdrule`**
+**File: `.cursor/rules/03-test-requirements.md`**
 ```markdown
 # Test Requirements
 
@@ -1430,7 +1430,7 @@ Minimum coverage: 80%
 
 **Implement guardrails for your team:**
 
-1. Create `.cursor/rules/00-safety-guardrails.mdrule`
+1. Create `.cursor/rules/00-safety-guardrails.md`
 2. Add command validation script
 3. Set up pre-commit hooks
 4. Document runbooks for top 3 incidents
@@ -1442,7 +1442,7 @@ Minimum coverage: 80%
 mkdir -p .cursor/rules .cursor/scripts runbooks
 
 # Create first guardrail
-cat > .cursor/rules/00-safety-guardrails.mdrule << 'EOF'
+cat > .cursor/rules/00-safety-guardrails.md << 'EOF'
 # Safety Guardrails
 
 ## Production Protection

@@ -1065,7 +1065,7 @@ Create:
 
 **Example rule file:**
 ```markdown
-# File: .cursor/rules/kubernetes-patterns.mdrule
+# File: .cursor/rules/kubernetes-patterns.md
 
 When working with Kubernetes:
 1. Always use @kubernetes MCP for live cluster data
